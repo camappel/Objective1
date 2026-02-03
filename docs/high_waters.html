@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./thames.html"> 
-<span class="menu-text">Thames Barrier (1984-2023)</span></a>
+<span class="menu-text">Thames Barrier</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./high_waters.html" aria-current="page"> 
@@ -155,10 +155,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#setup-and-configuration" id="toc-setup-and-configuration" class="nav-link" data-scroll-target="#setup-and-configuration">Setup and Configuration</a></li>
-  <li><a href="#load-barrier-closure-and-tide-data" id="toc-load-barrier-closure-and-tide-data" class="nav-link" data-scroll-target="#load-barrier-closure-and-tide-data">Load Barrier Closure and Tide Data</a></li>
-  <li><a href="#storm-12-analysis" id="toc-storm-12-analysis" class="nav-link" data-scroll-target="#storm-12-analysis">Storm 12 Analysis</a></li>
-  <li><a href="#storm-25-analysis" id="toc-storm-25-analysis" class="nav-link" data-scroll-target="#storm-25-analysis">Storm 25 Analysis</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#data-loading" id="toc-data-loading" class="nav-link" data-scroll-target="#data-loading">Data Loading</a></li>
+  <li><a href="#storm-12" id="toc-storm-12" class="nav-link" data-scroll-target="#storm-12">Storm 12</a></li>
+  <li><a href="#storm-23" id="toc-storm-23" class="nav-link" data-scroll-target="#storm-23">Storm 23</a></li>
+  <li><a href="#storm-25" id="toc-storm-25" class="nav-link" data-scroll-target="#storm-25">Storm 25</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 </nav>
@@ -187,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>This document provides a detailed analysis of water levels and surge for Storm 12 (closure event index 11) and Storm 25 (closure event index 24) for the Eastern Scheldt, converting the MATLAB script <code>master5.m</code> to Python. The analysis:</p>
+<p>This document provides a detailed analysis of water levels and surge for Storm 12 (closure event index 11), Storm 23 (closure event index 23, 2007), and Storm 25 (closure event index 24) for the Eastern Scheldt, converting the MATLAB script <code>master5.m</code> to Python. The analysis:</p>
 <ol type="1">
 <li>Loads barrier closure dates and tide gauge data from previous analyses</li>
 <li>Calculates surge component (WLP - TIP)</li>
@@ -197,10 +198,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Detailed two-panel view showing water level vs.&nbsp;tide and surge separately</li>
 </ul></li>
 </ol>
-<p>This provides a comprehensive view of the water level conditions that led to the barrier closures for Storms 12 and 25.</p>
+<p>This provides a comprehensive view of the water level conditions that led to the barrier closures for Storms 12, 23, and 25.</p>
 </section>
-<section id="setup-and-configuration" class="level2">
-<h2 class="anchored" data-anchor-id="setup-and-configuration">Setup and Configuration</h2>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <div id="setup-high-waters" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -214,17 +215,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>os.makedirs(output_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Analysis configuration:"</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Storms to process: Storm 12 (e=11, prefix '12_') and Storm 25 (e=24, prefix '25_')"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Storms to process: Storm 12 (e=11, prefix '12_'), Storm 23 (e=23, prefix '23_'), and Storm 25 (e=24, prefix '25_')"</span>)</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Output directory: </span><span class="sc">{</span>output_dir<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis configuration:
-  Storms to process: Storm 12 (e=11, prefix '12_') and Storm 25 (e=24, prefix '25_')
+  Storms to process: Storm 12 (e=11, prefix '12_'), Storm 23 (e=23, prefix '23_'), and Storm 25 (e=24, prefix '25_')
   Output directory: output</code></pre>
 </div>
 </div>
 </section>
-<section id="load-barrier-closure-and-tide-data" class="level2">
-<h2 class="anchored" data-anchor-id="load-barrier-closure-and-tide-data">Load Barrier Closure and Tide Data</h2>
+<section id="data-loading" class="level2">
+<h2 class="anchored" data-anchor-id="data-loading">Data Loading</h2>
 <div id="load-closure-tide-data" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load barrier closure data from master1</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Loading barrier closure data..."</span>)</span>
@@ -265,13 +266,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Total closure dates: </span><span class="sc">{</span><span class="bu">len</span>(OCD)<span class="sc">}</span><span class="ss"> closures"</span>)</span>
 <span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Time series points: </span><span class="sc">{</span><span class="bu">len</span>(TSP)<span class="sc">:,}</span><span class="ss">"</span>)</span>
 <span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Validate event indices for both storms</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Validate event indices for all storms</span></span>
 <span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>e_storm12 <span class="op">=</span> <span class="dv">11</span></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>e_storm25 <span class="op">=</span> <span class="dv">24</span></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> e_storm12 <span class="op">&gt;=</span> <span class="bu">len</span>(OCD):</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"Event index </span><span class="sc">{</span>e_storm12<span class="sc">}</span><span class="ss"> (Storm 12) is out of range. There are </span><span class="sc">{</span><span class="bu">len</span>(OCD)<span class="sc">}</span><span class="ss"> closure events (indices 0-</span><span class="sc">{</span><span class="bu">len</span>(OCD)<span class="op">-</span><span class="dv">1</span><span class="sc">}</span><span class="ss">)"</span>)</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> e_storm25 <span class="op">&gt;=</span> <span class="bu">len</span>(OCD):</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"Event index </span><span class="sc">{</span>e_storm25<span class="sc">}</span><span class="ss"> (Storm 25) is out of range. There are </span><span class="sc">{</span><span class="bu">len</span>(OCD)<span class="sc">}</span><span class="ss"> closure events (indices 0-</span><span class="sc">{</span><span class="bu">len</span>(OCD)<span class="op">-</span><span class="dv">1</span><span class="sc">}</span><span class="ss">)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>e_storm23 <span class="op">=</span> <span class="dv">23</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>e_storm25 <span class="op">=</span> <span class="dv">24</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> e_storm12 <span class="op">&gt;=</span> <span class="bu">len</span>(OCD):</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"Event index </span><span class="sc">{</span>e_storm12<span class="sc">}</span><span class="ss"> (Storm 12) is out of range. There are </span><span class="sc">{</span><span class="bu">len</span>(OCD)<span class="sc">}</span><span class="ss"> closure events (indices 0-</span><span class="sc">{</span><span class="bu">len</span>(OCD)<span class="op">-</span><span class="dv">1</span><span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> e_storm23 <span class="op">&gt;=</span> <span class="bu">len</span>(OCD):</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"Event index </span><span class="sc">{</span>e_storm23<span class="sc">}</span><span class="ss"> (Storm 23) is out of range. There are </span><span class="sc">{</span><span class="bu">len</span>(OCD)<span class="sc">}</span><span class="ss"> closure events (indices 0-</span><span class="sc">{</span><span class="bu">len</span>(OCD)<span class="op">-</span><span class="dv">1</span><span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> e_storm25 <span class="op">&gt;=</span> <span class="bu">len</span>(OCD):</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"Event index </span><span class="sc">{</span>e_storm25<span class="sc">}</span><span class="ss"> (Storm 25) is out of range. There are </span><span class="sc">{</span><span class="bu">len</span>(OCD)<span class="sc">}</span><span class="ss"> closure events (indices 0-</span><span class="sc">{</span><span class="bu">len</span>(OCD)<span class="op">-</span><span class="dv">1</span><span class="sc">}</span><span class="ss">)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Loading barrier closure data...
 Loading tide gauge and tidal prediction data...
@@ -282,10 +286,9 @@ Data loaded:
 </div>
 </div>
 </section>
-<section id="storm-12-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="storm-12-analysis">Storm 12 Analysis</h2>
+<section id="storm-12" class="level2">
+<h2 class="anchored" data-anchor-id="storm-12">Storm 12</h2>
 <p>Storm 12 corresponds to closure event index 11 (0-indexed) and uses datasets with prefix “12_” in the 2_DATA directory.</p>
-<p>This figure shows a zoomed view (5-day window: 2 days before to 3 days after the closure) of predicted astronomical tides (red), observed water levels (blue), the difference between them (green), and the closure date plus one day (vertical dashed magenta lines). The difference (WLP-TIP) represents the non-tidal component, primarily storm surge.</p>
 <div id="plot-predicted-high-waters-zoomed-storm12" class="cell" data-fig-height="8" data-fig-width="14" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Storm 12 configuration</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> <span class="dv">11</span>  <span class="co"># Closure event index (0-indexed, so e=11 means Storm 12)</span></span>
@@ -362,7 +365,6 @@ Processing Storm 12 (event index 11, prefix: 12_)
 <pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
 </div>
 </div>
-<p>This figure shows water level and surge time series zoomed to the closure event, providing context for the meteorological conditions.</p>
 <div id="plot-water-level-surge-storm12" class="cell" data-fig-height="10" data-fig-width="14" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Storm 12 configuration</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> <span class="dv">11</span>  <span class="co"># Closure event index (0-indexed, so e=11 means Storm 12)</span></span>
@@ -436,15 +438,14 @@ Processing Storm 12 (event index 11, prefix: 12_)
 </div>
 </div>
 </section>
-<section id="storm-25-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="storm-25-analysis">Storm 25 Analysis</h2>
-<p>Storm 25 corresponds to closure event index 24 (0-indexed) and uses datasets with prefix “25_” in the 2_DATA directory.</p>
-<p>This figure shows a zoomed view (5-day window: 2 days before to 3 days after the closure) of predicted astronomical tides (red), observed water levels (blue), the difference between them (green), and the closure date plus one day (vertical dashed magenta lines). The difference (WLP-TIP) represents the non-tidal component, primarily storm surge.</p>
-<div id="plot-predicted-high-waters-zoomed-storm25" class="cell" data-fig-height="8" data-fig-width="14" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Storm 25 configuration</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> <span class="dv">24</span>  <span class="co"># Closure event index (0-indexed, so e=24 means Storm 25)</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>storm_num <span class="op">=</span> <span class="dv">25</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>prefix <span class="op">=</span> <span class="st">'25_'</span></span>
+<section id="storm-23" class="level2">
+<h2 class="anchored" data-anchor-id="storm-23">Storm 23</h2>
+<p>Storm 23 corresponds to closure event index 23 (0-indexed) and uses datasets with prefix “23_” in the 2_DATA directory. This is the 2007 storm event.</p>
+<div id="plot-predicted-high-waters-zoomed-storm23" class="cell" data-fig-height="8" data-fig-width="14" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Storm 23 configuration</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> <span class="dv">23</span>  <span class="co"># Closure event index (0-indexed, so e=23 means Storm 23)</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>storm_num <span class="op">=</span> <span class="dv">23</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>prefix <span class="op">=</span> <span class="st">'23_'</span></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="sc">{</span><span class="st">'='</span><span class="op">*</span><span class="dv">60</span><span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Processing Storm </span><span class="sc">{</span>storm_num<span class="sc">}</span><span class="ss"> (event index </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">, prefix: </span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">)"</span>)</span>
@@ -496,32 +497,31 @@ Processing Storm 12 (event index 11, prefix: 12_)
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ============================================================
-Processing Storm 25 (event index 24, prefix: 25_)
+Processing Storm 23 (event index 23, prefix: 23_)
 ============================================================
-  Closure date: 2013-12-05 00:00:00
-  Closure date + 1 day: 2013-12-06 00:00:00</code></pre>
+  Closure date: 2007-11-09 00:00:00
+  Closure date + 1 day: 2007-11-10 00:00:00</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div id="plot-predicted-high-waters-zoomed-storm25-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-predicted-high-waters-zoomed-storm23-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="high_waters_files/figure-html/plot-predicted-high-waters-zoomed-storm25-output-2.png" class="img-fluid figure-img"></p>
-<figcaption>Predicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 25 - Eastern Scheldt</figcaption>
+<p><img src="high_waters_files/figure-html/plot-predicted-high-waters-zoomed-storm23-output-2.png" class="img-fluid figure-img"></p>
+<figcaption>Predicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 23 - Eastern Scheldt</figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Figure saved to output/high_waters_storm25_predicted_high_waters_zoomed.png</code></pre>
+<pre><code>  Figure saved to output/high_waters_storm23_predicted_high_waters_zoomed.png</code></pre>
 </div>
-<div id="plot-predicted-high-waters-zoomed-storm25-2" class="cell-output cell-output-display">
+<div id="plot-predicted-high-waters-zoomed-storm23-2" class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
 </div>
 </div>
-<p>This figure shows water level and surge time series zoomed to the closure event, providing context for the meteorological conditions.</p>
-<div id="plot-water-level-surge-storm25" class="cell" data-fig-height="10" data-fig-width="14" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Storm 25 configuration</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> <span class="dv">24</span>  <span class="co"># Closure event index (0-indexed, so e=24 means Storm 25)</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>storm_num <span class="op">=</span> <span class="dv">25</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>prefix <span class="op">=</span> <span class="st">'25_'</span></span>
+<div id="plot-water-level-surge-storm23" class="cell" data-fig-height="10" data-fig-width="14" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Storm 23 configuration</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> <span class="dv">23</span>  <span class="co"># Closure event index (0-indexed, so e=23 means Storm 23)</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>storm_num <span class="op">=</span> <span class="dv">23</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>prefix <span class="op">=</span> <span class="st">'23_'</span></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="sc">{</span><span class="st">'='</span><span class="op">*</span><span class="dv">60</span><span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Processing Storm </span><span class="sc">{</span>storm_num<span class="sc">}</span><span class="ss"> (event index </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">, prefix: </span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">)"</span>)</span>
@@ -569,6 +569,158 @@ Processing Storm 25 (event index 24, prefix: 25_)
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ============================================================
+Processing Storm 23 (event index 23, prefix: 23_)
+============================================================
+  Closure date: 2007-11-09 00:00:00
+  Closure date + 1 day: 2007-11-10 00:00:00</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div id="plot-water-level-surge-storm23-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="high_waters_files/figure-html/plot-water-level-surge-storm23-output-2.png" class="img-fluid figure-img"></p>
+<figcaption>Water level and surge time series for Storm 23 closure event</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Figure saved to output/high_waters_storm23_water_level_surge.png</code></pre>
+</div>
+<div id="plot-water-level-surge-storm23-2" class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="storm-25" class="level2">
+<h2 class="anchored" data-anchor-id="storm-25">Storm 25</h2>
+<p>Storm 25 corresponds to closure event index 24 (0-indexed) and uses datasets with prefix “25_” in the 2_DATA directory.</p>
+<div id="plot-predicted-high-waters-zoomed-storm25" class="cell" data-fig-height="8" data-fig-width="14" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Storm 25 configuration</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> <span class="dv">24</span>  <span class="co"># Closure event index (0-indexed, so e=24 means Storm 25)</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>storm_num <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>prefix <span class="op">=</span> <span class="st">'25_'</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="sc">{</span><span class="st">'='</span><span class="op">*</span><span class="dv">60</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Processing Storm </span><span class="sc">{</span>storm_num<span class="sc">}</span><span class="ss"> (event index </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">, prefix: </span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'='</span><span class="op">*</span><span class="dv">60</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the closure event date</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>closure_date <span class="op">=</span> OCD[e]</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>closure_date_plus_one <span class="op">=</span> closure_date <span class="op">+</span> timedelta(days<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Closure date: </span><span class="sc">{</span>closure_date<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Closure date + 1 day: </span><span class="sc">{</span>closure_date_plus_one<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">8</span>))</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot vertical lines for closure date and closure date + 1 day</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>ax.axvline(closure_date, color<span class="op">=</span><span class="st">'m'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="st">'Closure date'</span>)</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>ax.axvline(closure_date_plus_one, color<span class="op">=</span><span class="st">'m'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="st">'Closure date + 1 day'</span>)</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot predicted tides (TIP)</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>ax.plot(TSP, TIP, <span class="st">'r'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="st">'Predicted tide (TIP)'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot observed water levels (WLP)</span></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>ax.plot(TSP, WLP, <span class="st">'b'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="st">'Observed water level (WLP)'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot difference (WLP - TIP) - surge component</span></span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>ax.plot(TSP, WLP <span class="op">-</span> TIP, <span class="st">'g'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, label<span class="op">=</span><span class="st">'Surge (WLP - TIP)'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Set zoom window: 2 days before to 3 days after closure</span></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>xlim_start <span class="op">=</span> closure_date <span class="op">-</span> timedelta(days<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>xlim_end <span class="op">=</span> closure_date <span class="op">+</span> timedelta(days<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Formatting</span></span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Date'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Level (m)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="ss">f'Storm </span><span class="sc">{</span>storm_num<span class="sc">}</span><span class="ss"> - Predicted High Waters (Zoomed View)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">18</span>)</span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(xlim_start, xlim_end)</span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>ax.legend(fontsize<span class="op">=</span><span class="dv">14</span>, loc<span class="op">=</span><span class="st">'best'</span>)</span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a>ax.tick_params(labelsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Save figure with storm number in filename</span></span>
+<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a>fig_file <span class="op">=</span> os.path.join(output_dir, <span class="ss">f'high_waters_storm</span><span class="sc">{</span>storm_num<span class="sc">}</span><span class="ss">_predicted_high_waters_zoomed.png'</span>)</span>
+<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a>plt.savefig(fig_file, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
+<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Figure saved to </span><span class="sc">{</span>fig_file<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+============================================================
+Processing Storm 25 (event index 24, prefix: 25_)
+============================================================
+  Closure date: 2013-12-05 00:00:00
+  Closure date + 1 day: 2013-12-06 00:00:00</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div id="plot-predicted-high-waters-zoomed-storm25-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="high_waters_files/figure-html/plot-predicted-high-waters-zoomed-storm25-output-2.png" class="img-fluid figure-img"></p>
+<figcaption>Predicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 25 - Eastern Scheldt</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Figure saved to output/high_waters_storm25_predicted_high_waters_zoomed.png</code></pre>
+</div>
+<div id="plot-predicted-high-waters-zoomed-storm25-2" class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+<div id="plot-water-level-surge-storm25" class="cell" data-fig-height="10" data-fig-width="14" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Storm 25 configuration</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> <span class="dv">24</span>  <span class="co"># Closure event index (0-indexed, so e=24 means Storm 25)</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>storm_num <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>prefix <span class="op">=</span> <span class="st">'25_'</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="sc">{</span><span class="st">'='</span><span class="op">*</span><span class="dv">60</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Processing Storm </span><span class="sc">{</span>storm_num<span class="sc">}</span><span class="ss"> (event index </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">, prefix: </span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'='</span><span class="op">*</span><span class="dv">60</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the closure event date</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>closure_date <span class="op">=</span> OCD[e]</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>closure_date_plus_one <span class="op">=</span> closure_date <span class="op">+</span> timedelta(days<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Closure date: </span><span class="sc">{</span>closure_date<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Closure date + 1 day: </span><span class="sc">{</span>closure_date_plus_one<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">10</span>), sharex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Top panel: Water level and predicted tide</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>ax1.plot(TSP, WLP, <span class="st">'b'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Water level'</span>)</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>ax1.plot(TSP, TIP, <span class="st">'r'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Astronomical tide'</span>)</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>ax1.axvline(closure_date, color<span class="op">=</span><span class="st">'m'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="st">'Closure date'</span>)</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>ax1.axvline(closure_date_plus_one, color<span class="op">=</span><span class="st">'m'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="st">'Closure date + 1 day'</span>)</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Water level (m)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="ss">f'Storm </span><span class="sc">{</span>storm_num<span class="sc">}</span><span class="ss"> - Water Level and Surge'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">18</span>)</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>ax1.legend(fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>ax1.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>ax1.tick_params(labelsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>ax1.set_xlim(closure_date <span class="op">-</span> timedelta(hours<span class="op">=</span><span class="dv">12</span>), closure_date <span class="op">+</span> timedelta(hours<span class="op">=</span><span class="dv">60</span>))</span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Bottom panel: Surge</span></span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>surge_color <span class="op">=</span> np.array([<span class="dv">255</span>, <span class="dv">103</span>, <span class="dv">40</span>]) <span class="op">/</span> <span class="dv">255</span></span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a>ax2.plot(TSP, SUP, color<span class="op">=</span>surge_color, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>ax2.axvline(closure_date, color<span class="op">=</span><span class="st">'m'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a>ax2.axvline(closure_date_plus_one, color<span class="op">=</span><span class="st">'m'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">'Date'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'Surge (m)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a>ax2.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(labelsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a>ax2.set_xlim(closure_date <span class="op">-</span> timedelta(hours<span class="op">=</span><span class="dv">12</span>), closure_date <span class="op">+</span> timedelta(hours<span class="op">=</span><span class="dv">60</span>))</span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Save figure with storm number in filename</span></span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a>fig_file <span class="op">=</span> os.path.join(output_dir, <span class="ss">f'high_waters_storm</span><span class="sc">{</span>storm_num<span class="sc">}</span><span class="ss">_water_level_surge.png'</span>)</span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a>plt.savefig(fig_file, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Figure saved to </span><span class="sc">{</span>fig_file<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+============================================================
 Processing Storm 25 (event index 24, prefix: 25_)
 ============================================================
   Closure date: 2013-12-05 00:00:00
@@ -593,15 +745,15 @@ Processing Storm 25 (event index 24, prefix: 25_)
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>This analysis provides detailed insight into Storm 12 and Storm 25 closure event water levels:</p>
+<p>This analysis provides detailed insight into Storm 12, Storm 23, and Storm 25 closure event water levels:</p>
 <ul>
-<li><strong>Event focus</strong>: Detailed analysis of Storm 12 (closure event index 11, prefix “12_”) and Storm 25 (closure event index 24, prefix “25_”) for the Eastern Scheldt</li>
+<li><strong>Event focus</strong>: Detailed analysis of Storm 12 (closure event index 11, prefix “12_”), Storm 23 (closure event index 23, prefix “23_”, 2007), and Storm 25 (closure event index 24, prefix “25_”) for the Eastern Scheldt</li>
 <li><strong>Water level context</strong>: Shows how observed water levels, predicted tides, and surge evolved around each closure event with closure date markers</li>
 <li><strong>Time window</strong>: 5-day zoomed view (2 days before to 3 days after closure) captures the full storm event for each storm</li>
 <li><strong>Surge analysis</strong>: The surge component (WLP-TIP) shows the meteorological forcing that contributed to each closure</li>
 <li><strong>Tidal vs.&nbsp;meteorological effects</strong>: The difference between observed and predicted levels highlights the meteorological forcing that triggered each closure</li>
 </ul>
-<p>This detailed view helps understand the specific water level conditions that led to the barrier closures for Storms 12 and 25, including the timing relative to predicted tides and the magnitude of the storm surge component. The prefix identifiers (“12_” and “25_”) can be used to identify the corresponding datasets in the 2_DATA directory.</p>
+<p>This detailed view helps understand the specific water level conditions that led to the barrier closures for Storms 12, 23, and 25, including the timing relative to predicted tides and the magnitude of the storm surge component. The prefix identifiers (“12_”, “23_”, and “25_”) can be used to identify the corresponding datasets in the 2_DATA directory.</p>
 
 
 </section>
