@@ -157,33 +157,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#part-1-barrier-closure-analysis" id="toc-part-1-barrier-closure-analysis" class="nav-link" data-scroll-target="#part-1-barrier-closure-analysis">Part 1: Barrier Closure Analysis</a>
+  <li><a href="#barrier-closures" id="toc-barrier-closures" class="nav-link active" data-scroll-target="#barrier-closures">Barrier Closures</a>
   <ul class="collapse">
-  <li><a href="#overview-1" id="toc-overview-1" class="nav-link" data-scroll-target="#overview-1">Overview</a></li>
-  <li><a href="#setup-and-configuration" id="toc-setup-and-configuration" class="nav-link" data-scroll-target="#setup-and-configuration">Setup and Configuration</a></li>
-  <li><a href="#load-barrier-closure-data" id="toc-load-barrier-closure-data" class="nav-link" data-scroll-target="#load-barrier-closure-data">Load Barrier Closure Data</a></li>
-  <li><a href="#count-closures-per-water-year" id="toc-count-closures-per-water-year" class="nav-link" data-scroll-target="#count-closures-per-water-year">Count Closures Per Water Year</a></li>
-  <li><a href="#calculate-statistics" id="toc-calculate-statistics" class="nav-link" data-scroll-target="#calculate-statistics">Calculate Statistics</a></li>
-  <li><a href="#save-results-part-1" id="toc-save-results-part-1" class="nav-link" data-scroll-target="#save-results-part-1">Save Results (Part 1)</a></li>
-  <li><a href="#visualization-part-1" id="toc-visualization-part-1" class="nav-link" data-scroll-target="#visualization-part-1">Visualization (Part 1)</a>
-  <ul class="collapse">
-  <li><a href="#table-of-barrier-closures-storms" id="toc-table-of-barrier-closures-storms" class="nav-link" data-scroll-target="#table-of-barrier-closures-storms">Table of Barrier Closures (Storms)</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#part-2-tide-gauge-data-processing" id="toc-part-2-tide-gauge-data-processing" class="nav-link" data-scroll-target="#part-2-tide-gauge-data-processing">Part 2: Tide Gauge Data Processing</a>
+  <li><a href="#tide-gauge-data-processing" id="toc-tide-gauge-data-processing" class="nav-link" data-scroll-target="#tide-gauge-data-processing">Tide Gauge Data Processing</a>
   <ul class="collapse">
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#setup-and-configuration-1" id="toc-setup-and-configuration-1" class="nav-link" data-scroll-target="#setup-and-configuration-1">Setup and Configuration</a></li>
-  <li><a href="#load-tide-gauge-data" id="toc-load-tide-gauge-data" class="nav-link" data-scroll-target="#load-tide-gauge-data">Load Tide Gauge Data</a></li>
   <li><a href="#save-results-part-2" id="toc-save-results-part-2" class="nav-link" data-scroll-target="#save-results-part-2">Save Results (Part 2)</a></li>
   <li><a href="#visualization-part-2" id="toc-visualization-part-2" class="nav-link" data-scroll-target="#visualization-part-2">Visualization (Part 2)</a></li>
   </ul></li>
-  <li><a href="#part-3-tidal-analysis" id="toc-part-3-tidal-analysis" class="nav-link" data-scroll-target="#part-3-tidal-analysis">Part 3: Tidal Analysis</a>
+  <li><a href="#tidal-analysis" id="toc-tidal-analysis" class="nav-link" data-scroll-target="#tidal-analysis">Tidal Analysis</a>
   <ul class="collapse">
-  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1">Introduction</a></li>
-  <li><a href="#setup-and-configuration-2" id="toc-setup-and-configuration-2" class="nav-link" data-scroll-target="#setup-and-configuration-2">Setup and Configuration</a></li>
-  <li><a href="#load-tide-gauge-data-1" id="toc-load-tide-gauge-data-1" class="nav-link" data-scroll-target="#load-tide-gauge-data-1">Load Tide Gauge Data</a></li>
+  <li><a href="#setup-and-configuration" id="toc-setup-and-configuration" class="nav-link" data-scroll-target="#setup-and-configuration">Setup and Configuration</a></li>
+  <li><a href="#load-tide-gauge-data" id="toc-load-tide-gauge-data" class="nav-link" data-scroll-target="#load-tide-gauge-data">Load Tide Gauge Data</a></li>
   <li><a href="#calculate-data-quality-per-year" id="toc-calculate-data-quality-per-year" class="nav-link" data-scroll-target="#calculate-data-quality-per-year">Calculate Data Quality Per Year</a></li>
   <li><a href="#tidal-analysis-and-prediction" id="toc-tidal-analysis-and-prediction" class="nav-link" data-scroll-target="#tidal-analysis-and-prediction">Tidal Analysis and Prediction</a></li>
   <li><a href="#save-results-part-3" id="toc-save-results-part-3" class="nav-link" data-scroll-target="#save-results-part-3">Save Results (Part 3)</a></li>
@@ -191,16 +178,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#part-4-predicted-high-waters-and-barrier-closures" id="toc-part-4-predicted-high-waters-and-barrier-closures" class="nav-link" data-scroll-target="#part-4-predicted-high-waters-and-barrier-closures">Part 4: Predicted High Waters and Barrier Closures</a>
   <ul class="collapse">
-  <li><a href="#introduction-2" id="toc-introduction-2" class="nav-link" data-scroll-target="#introduction-2">Introduction</a></li>
-  <li><a href="#setup-and-configuration-3" id="toc-setup-and-configuration-3" class="nav-link" data-scroll-target="#setup-and-configuration-3">Setup and Configuration</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#setup-and-configuration-1" id="toc-setup-and-configuration-1" class="nav-link" data-scroll-target="#setup-and-configuration-1">Setup and Configuration</a></li>
   <li><a href="#load-data" id="toc-load-data" class="nav-link" data-scroll-target="#load-data">Load Data</a></li>
   <li><a href="#figure---predicted-high-waters-and-closures" id="toc-figure---predicted-high-waters-and-closures" class="nav-link" data-scroll-target="#figure---predicted-high-waters-and-closures">Figure - Predicted High Waters and Closures</a></li>
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
   <ul class="collapse">
-  <li><a href="#part-1-barrier-closure-analysis-1" id="toc-part-1-barrier-closure-analysis-1" class="nav-link" data-scroll-target="#part-1-barrier-closure-analysis-1">Part 1: Barrier Closure Analysis</a></li>
-  <li><a href="#part-2-tide-gauge-data-processing-1" id="toc-part-2-tide-gauge-data-processing-1" class="nav-link" data-scroll-target="#part-2-tide-gauge-data-processing-1">Part 2: Tide Gauge Data Processing</a></li>
-  <li><a href="#part-3-tidal-analysis-1" id="toc-part-3-tidal-analysis-1" class="nav-link" data-scroll-target="#part-3-tidal-analysis-1">Part 3: Tidal Analysis</a></li>
+  <li><a href="#part-1-barrier-closure-analysis" id="toc-part-1-barrier-closure-analysis" class="nav-link" data-scroll-target="#part-1-barrier-closure-analysis">Part 1: Barrier Closure Analysis</a></li>
+  <li><a href="#part-2-tide-gauge-data-processing" id="toc-part-2-tide-gauge-data-processing" class="nav-link" data-scroll-target="#part-2-tide-gauge-data-processing">Part 2: Tide Gauge Data Processing</a></li>
+  <li><a href="#part-3-tidal-analysis" id="toc-part-3-tidal-analysis" class="nav-link" data-scroll-target="#part-3-tidal-analysis">Part 3: Tidal Analysis</a></li>
   <li><a href="#part-4-visualization" id="toc-part-4-visualization" class="nav-link" data-scroll-target="#part-4-visualization">Part 4: Visualization</a></li>
   </ul></li>
   </ul>
@@ -228,8 +215,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>This document provides a complete analysis workflow for the Thames barrier system, combining barrier closure analysis, tide gauge data processing, tidal analysis, and visualization. The analysis covers the period from 1986 to 2024 and includes:</p>
 <ol type="1">
 <li><strong>Barrier Closure Analysis</strong>: Loading and analyzing past barrier closure dates, counting closures per water year, and calculating statistics</li>
@@ -239,11 +224,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>Water years run from July 1 to June 30, which is more appropriate for coastal flood analysis than calendar years.</p>
 <hr>
-</section>
-<section id="part-1-barrier-closure-analysis" class="level1">
-<h1>Part 1: Barrier Closure Analysis</h1>
-<section id="overview-1" class="level2">
-<h2 class="anchored" data-anchor-id="overview-1">Overview</h2>
+<section id="barrier-closures" class="level1">
+<h1>Barrier Closures</h1>
 <p>This section analyzes past closures of the Thames barrier. The analysis:</p>
 <ol type="1">
 <li>Loads barrier closure dates from an Excel file</li>
@@ -251,9 +233,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Calculates statistics (min, mean, max, total closures)</li>
 <li>Creates a bar chart visualization</li>
 </ol>
-</section>
-<section id="setup-and-configuration" class="level2">
-<h2 class="anchored" data-anchor-id="setup-and-configuration">Setup and Configuration</h2>
 <div id="setup-master1-thames" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -276,9 +255,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   Water years: 1986/87 to 2024/25 (39 years)</code></pre>
 </div>
 </div>
-</section>
-<section id="load-barrier-closure-data" class="level2">
-<h2 class="anchored" data-anchor-id="load-barrier-closure-data">Load Barrier Closure Data</h2>
 <div id="load-closures-thames" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Observed closure data - Thames Barrier</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">'../2_DATA/1_BARRIER_CLOSURES'</span></span>
@@ -302,9 +278,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   Last closure: 2024-04-09 00:00:00</code></pre>
 </div>
 </div>
-</section>
-<section id="count-closures-per-water-year" class="level2">
-<h2 class="anchored" data-anchor-id="count-closures-per-water-year">Count Closures Per Water Year</h2>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
 <div id="count-closures-thames" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Count closures per water year (July 1 to July 1)</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>OCS <span class="op">=</span> []  <span class="co"># Will store [index, year, year+1, num_closures]</span></span>
@@ -335,9 +310,6 @@ Closures per water year calculated for 39 years
   Total closures: 219</code></pre>
 </div>
 </div>
-</section>
-<section id="calculate-statistics" class="level2">
-<h2 class="anchored" data-anchor-id="calculate-statistics">Calculate Statistics</h2>
 <div id="statistics-thames" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Calculate statistics</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> np.array([</span>
@@ -361,9 +333,6 @@ Closure statistics:
   Total: 219</code></pre>
 </div>
 </div>
-</section>
-<section id="save-results-part-1" class="level2">
-<h2 class="anchored" data-anchor-id="save-results-part-1">Save Results (Part 1)</h2>
 <div id="save-master1-thames" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Save data</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>output_file <span class="op">=</span> os.path.join(output_dir, <span class="st">'mast1_thames.pkl'</span>)</span>
@@ -381,8 +350,8 @@ Data saved to output/mast1_thames.pkl</code></pre>
 </div>
 </div>
 </section>
-<section id="visualization-part-1" class="level2">
-<h2 class="anchored" data-anchor-id="visualization-part-1">Visualization (Part 1)</h2>
+<section id="visualization" class="level2">
+<h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
 <p>This bar chart shows the number of barrier closures per water year from 1986/87 to 2024/25. The Thames Barrier closes when water levels exceed a threshold, typically during storm surge events.</p>
 <div id="plot-closures-thames" class="cell" data-fig-height="6" data-fig-width="12" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
@@ -422,8 +391,6 @@ Figure saved to output/master1_thames_closures.png</code></pre>
 <pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
 </div>
 </div>
-<section id="table-of-barrier-closures-storms" class="level3">
-<h3 class="anchored" data-anchor-id="table-of-barrier-closures-storms">Table of Barrier Closures (Storms)</h3>
 <p>The following table lists all barrier closure dates, which correspond to storm events that triggered the Thames Barrier.</p>
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create DataFrame with closure dates</span></span>
@@ -450,10 +417,10 @@ Figure saved to output/master1_thames_closures.png</code></pre>
 <span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Storms in the same year and month get the same index</span></span>
 <span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>unique_year_months <span class="op">=</span> storms_df[<span class="st">'YearMonth'</span>].unique()</span>
 <span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>year_month_to_index <span class="op">=</span> {ym: idx <span class="op">+</span> <span class="dv">1</span> <span class="cf">for</span> idx, ym <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">sorted</span>(unique_year_months))}</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>storms_df[<span class="st">'Index'</span>] <span class="op">=</span> storms_df[<span class="st">'YearMonth'</span>].<span class="bu">map</span>(year_month_to_index)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>storms_df[<span class="st">'Event'</span>] <span class="op">=</span> storms_df[<span class="st">'YearMonth'</span>].<span class="bu">map</span>(year_month_to_index)</span>
 <span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder columns (Index first, then remove YearMonth helper column)</span></span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>storms_df <span class="op">=</span> storms_df[[<span class="st">'Index'</span>, <span class="st">'Closure Date'</span>, <span class="st">'Water Year'</span>, <span class="st">'Year'</span>, <span class="st">'Month'</span>]]</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>storms_df <span class="op">=</span> storms_df[[<span class="st">'Event'</span>, <span class="st">'Closure Date'</span>, <span class="st">'Water Year'</span>, <span class="st">'Year'</span>, <span class="st">'Month'</span>]]</span>
 <span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Display table</span></span>
 <span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Total number of closures: </span><span class="sc">{</span><span class="bu">len</span>(storms_df)<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -471,7 +438,7 @@ Total number of closures: 221</code></pre>
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Index</th>
+<th data-quarto-table-cell-role="th">Event</th>
 <th data-quarto-table-cell-role="th">Closure Date</th>
 <th data-quarto-table-cell-role="th">Water Year</th>
 <th data-quarto-table-cell-role="th">Year</th>
@@ -577,11 +544,8 @@ Total number of closures: 221</code></pre>
 <hr>
 </section>
 </section>
-</section>
-<section id="part-2-tide-gauge-data-processing" class="level1">
-<h1>Part 2: Tide Gauge Data Processing</h1>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<section id="tide-gauge-data-processing" class="level1">
+<h1>Tide Gauge Data Processing</h1>
 <p>This section loads and processes raw tide gauge data from the Thames estuary. The analysis uses the <strong>Sheerness tide gauge</strong> data from the GESLA4 (Global Extreme Sea Level Analysis) dataset, which is located near the Thames Barrier at coordinates 51.445639°N, 0.743361°E. The Sheerness gauge provides high-quality data from the British Oceanographic Data Centre (BODC) covering the period from 1952 to 2025.</p>
 <p>The analysis:</p>
 <ol type="1">
@@ -592,9 +556,6 @@ Total number of closures: 221</code></pre>
 <li>Creates a visualization of the complete water level time series</li>
 </ol>
 <p>The GESLA4 format uses Admiralty Chart Datum (ACD) as the vertical reference. The data is provided at 15-minute intervals in the original file, which is interpolated to 10-minute intervals for consistency with the Eastern Scheldt analysis workflow. Missing values are indicated by -99.9999 in the GESLA4 format and are filtered out during processing.</p>
-</section>
-<section id="setup-and-configuration-1" class="level2">
-<h2 class="anchored" data-anchor-id="setup-and-configuration-1">Setup and Configuration</h2>
 <div id="setup-master2-thames" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -620,9 +581,6 @@ Total number of closures: 221</code></pre>
 Output directory: output</code></pre>
 </div>
 </div>
-</section>
-<section id="load-tide-gauge-data" class="level2">
-<h2 class="anchored" data-anchor-id="load-tide-gauge-data">Load Tide Gauge Data</h2>
 <p>This section loads the Sheerness tide gauge data from the GESLA4 dataset. The GESLA4 format is a standardized global sea level dataset that includes quality control flags and metadata. The Sheerness gauge is located on the Isle of Sheppey in the Thames estuary, approximately 50 km downstream from the Thames Barrier, making it an appropriate reference for barrier closure analysis.</p>
 <p>The data loading process: - Reads the GESLA4 file format, skipping header lines (starting with <code>#</code>) - Parses date/time strings and converts them to datetime objects - Extracts sea level values (in meters) and quality control flags - Filters to only include data with <code>use_flag == 1</code> (recommended for analysis) - Removes missing values (indicated by -99.9999) - Filters to the analysis period (1986-2023) - Interpolates from the original 15-minute intervals to 10-minute intervals using nearest-neighbor interpolation with a 15-minute tolerance</p>
 <p>The resulting time series provides continuous water level data at 10-minute intervals for the entire analysis period.</p>
@@ -724,7 +682,6 @@ Output directory: output</code></pre>
   Valid data: 1,124,886 points (56.3%)</code></pre>
 </div>
 </div>
-</section>
 <section id="save-results-part-2" class="level2">
 <h2 class="anchored" data-anchor-id="save-results-part-2">Save Results (Part 2)</h2>
 <p>Save the combined time series to a pickle file for use in subsequent analyses.</p>
@@ -781,10 +738,8 @@ Figure saved to output/master2_thames_tide_gauge.png</code></pre>
 <hr>
 </section>
 </section>
-<section id="part-3-tidal-analysis" class="level1">
-<h1>Part 3: Tidal Analysis</h1>
-<section id="introduction-1" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-1">Introduction</h2>
+<section id="tidal-analysis" class="level1">
+<h1>Tidal Analysis</h1>
 <p>This section performs harmonic tidal analysis on tide gauge data from the Thames. The analysis:</p>
 <ol type="1">
 <li>Calculates data quality for each year (1986-2023)</li>
@@ -793,9 +748,8 @@ Figure saved to output/master2_thames_tide_gauge.png</code></pre>
 <li>Compares observed water levels with predicted astronomical tides</li>
 </ol>
 <p>The predicted tides represent only the astronomical component, while observed water levels include both tides and meteorological effects (storm surges, wind setup, etc.).</p>
-</section>
-<section id="setup-and-configuration-2" class="level2">
-<h2 class="anchored" data-anchor-id="setup-and-configuration-2">Setup and Configuration</h2>
+<section id="setup-and-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="setup-and-configuration">Setup and Configuration</h2>
 <div id="setup-master3-thames" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -826,8 +780,8 @@ Figure saved to output/master2_thames_tide_gauge.png</code></pre>
 </div>
 </div>
 </section>
-<section id="load-tide-gauge-data-1" class="level2">
-<h2 class="anchored" data-anchor-id="load-tide-gauge-data-1">Load Tide Gauge Data</h2>
+<section id="load-tide-gauge-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-tide-gauge-data">Load Tide Gauge Data</h2>
 <div id="load-data-master3-thames" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Loading tide gauge data..."</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>mast2_file <span class="op">=</span> os.path.join(output_dir, <span class="st">'mast2_thames.pkl'</span>)</span>
@@ -1180,8 +1134,8 @@ Figure saved to output/master3_thames_tidal_analysis.png</code></pre>
 </section>
 <section id="part-4-predicted-high-waters-and-barrier-closures" class="level1">
 <h1>Part 4: Predicted High Waters and Barrier Closures</h1>
-<section id="introduction-2" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-2">Introduction</h2>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>This section plots time-series of predicted high waters and barrier closures for the Thames. The analysis:</p>
 <ol type="1">
 <li>Loads barrier closure dates and tide gauge data from previous analyses</li>
@@ -1195,8 +1149,8 @@ Figure saved to output/master3_thames_tidal_analysis.png</code></pre>
 </ol>
 <p>This visualization helps identify when barrier closures occurred relative to predicted high waters and actual water levels.</p>
 </section>
-<section id="setup-and-configuration-3" class="level2">
-<h2 class="anchored" data-anchor-id="setup-and-configuration-3">Setup and Configuration</h2>
+<section id="setup-and-configuration-1" class="level2">
+<h2 class="anchored" data-anchor-id="setup-and-configuration-1">Setup and Configuration</h2>
 <div id="setup-master4-thames" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -1355,24 +1309,24 @@ Figure saved to output/master4_thames_predicted_high_waters.png</code></pre>
 <section id="summary" class="level1">
 <h1>Summary</h1>
 <p>This complete analysis workflow has processed data from 1986 to 2024 for the Thames barrier system. Key results from each part:</p>
-<section id="part-1-barrier-closure-analysis-1" class="level2">
-<h2 class="anchored" data-anchor-id="part-1-barrier-closure-analysis-1">Part 1: Barrier Closure Analysis</h2>
+<section id="part-1-barrier-closure-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-barrier-closure-analysis">Part 1: Barrier Closure Analysis</h2>
 <ul>
 <li><strong>Total closures</strong>: Recorded across water years 1986/87 to 2024/25</li>
 <li><strong>Annual statistics</strong>: Minimum, mean, and maximum closures per water year</li>
 <li><strong>Temporal patterns</strong>: Variability in closure frequency over time</li>
 </ul>
 </section>
-<section id="part-2-tide-gauge-data-processing-1" class="level2">
-<h2 class="anchored" data-anchor-id="part-2-tide-gauge-data-processing-1">Part 2: Tide Gauge Data Processing</h2>
+<section id="part-2-tide-gauge-data-processing" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-tide-gauge-data-processing">Part 2: Tide Gauge Data Processing</h2>
 <ul>
 <li><strong>Combined time series</strong>: 1986-2023 at 10-minute intervals</li>
 <li><strong>Data sources</strong>: Available Thames tide gauge measurements</li>
 <li><strong>Data quality</strong>: Percentage of valid data points across the time series</li>
 </ul>
 </section>
-<section id="part-3-tidal-analysis-1" class="level2">
-<h2 class="anchored" data-anchor-id="part-3-tidal-analysis-1">Part 3: Tidal Analysis</h2>
+<section id="part-3-tidal-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-tidal-analysis">Part 3: Tidal Analysis</h2>
 <ul>
 <li><strong>Data quality</strong>: Calculated for each year to determine suitable reference years</li>
 <li><strong>Harmonic analysis</strong>: Performed using <code>pytides</code> (Python equivalent of MATLAB’s <code>t_tide</code>)</li>

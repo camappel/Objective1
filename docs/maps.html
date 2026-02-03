@@ -224,26 +224,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime, timedelta</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Configuration</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>tint <span class="op">=</span> <span class="dv">6</span>  <span class="co"># Time interval for GTSM plots (hours)</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>tint_met <span class="op">=</span> <span class="dv">12</span>  <span class="co"># Time interval for meteorological plots (hours)</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>output_dir <span class="op">=</span> <span class="st">'output'</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">'../2_DATA'</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Spatial bounds</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>xb_gtsm <span class="op">=</span> [<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>]  <span class="co"># GTSM longitude bounds</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>yb_gtsm <span class="op">=</span> [<span class="dv">45</span>, <span class="dv">60</span>]   <span class="co"># GTSM latitude bounds</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>xb_met <span class="op">=</span> [<span class="op">-</span><span class="dv">30</span>, <span class="dv">15</span>]   <span class="co"># ERA5 longitude bounds</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>yb_met <span class="op">=</span> [<span class="dv">40</span>, <span class="dv">70</span>]    <span class="co"># ERA5 latitude bounds</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>os.makedirs(output_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cartopy.crs <span class="im">as</span> ccrs</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cartopy.feature <span class="im">as</span> cfeature</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Configuration</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>tint <span class="op">=</span> <span class="dv">6</span>  <span class="co"># Time interval for GTSM plots (hours)</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>tint_met <span class="op">=</span> <span class="dv">12</span>  <span class="co"># Time interval for meteorological plots (hours)</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>output_dir <span class="op">=</span> <span class="st">'output'</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">'../2_DATA'</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Spatial bounds</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>xb_gtsm <span class="op">=</span> [<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>]  <span class="co"># GTSM longitude bounds</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>yb_gtsm <span class="op">=</span> [<span class="dv">45</span>, <span class="dv">60</span>]   <span class="co"># GTSM latitude bounds</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>xb_met <span class="op">=</span> [<span class="op">-</span><span class="dv">30</span>, <span class="dv">15</span>]   <span class="co"># ERA5 longitude bounds</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>yb_met <span class="op">=</span> [<span class="dv">40</span>, <span class="dv">70</span>]    <span class="co"># ERA5 latitude bounds</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Analysis configuration:"</span>)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Storms to process: Storm 12 (e=11, prefix '12_') and Storm 25 (e=24, prefix '25_')"</span>)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  GTSM time interval: </span><span class="sc">{</span>tint<span class="sc">}</span><span class="ss"> hours"</span>)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Meteorological time interval: </span><span class="sc">{</span>tint_met<span class="sc">}</span><span class="ss"> hours"</span>)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Output directory: </span><span class="sc">{</span>output_dir<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>os.makedirs(output_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Analysis configuration:"</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Storms to process: Storm 12 (e=11, prefix '12_') and Storm 25 (e=24, prefix '25_')"</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  GTSM time interval: </span><span class="sc">{</span>tint<span class="sc">}</span><span class="ss"> hours"</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Meteorological time interval: </span><span class="sc">{</span>tint_met<span class="sc">}</span><span class="ss"> hours"</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Output directory: </span><span class="sc">{</span>output_dir<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis configuration:
   Storms to process: Storm 12 (e=11, prefix '12_') and Storm 25 (e=24, prefix '25_')
@@ -480,6 +482,60 @@ Time indices for GTSM plots:
 <section id="storm-12---gtsm-surge-maps" class="level3">
 <h3 class="anchored" data-anchor-id="storm-12---gtsm-surge-maps">Storm 12 - GTSM Surge Maps</h3>
 <p>This figure shows spatial surge patterns from GTSM reanalysis at 6 time steps around the closure event, illustrating how surge developed and propagated.</p>
+<div id="plot-gtsm-surge-storm12" class="cell" data-fig-height="10" data-fig-width="16" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.gridspec <span class="im">as</span> gridspec</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">10</span>))</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>gs <span class="op">=</span> gridspec.GridSpec(<span class="dv">2</span>, <span class="dv">4</span>, width_ratios<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">0.06</span>], wspace<span class="op">=</span><span class="fl">0.3</span>, hspace<span class="op">=</span><span class="fl">0.25</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> [fig.add_subplot(gs[i <span class="op">//</span> <span class="dv">3</span>, i <span class="op">%</span> <span class="dv">3</span>]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>)]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, t_idx <span class="kw">in</span> <span class="bu">enumerate</span>(t_gtsm):</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axes[i]</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    scatter <span class="op">=</span> ax.scatter(X_GT, Y_GT, c<span class="op">=</span>SU_GT[t_idx, :], cmap<span class="op">=</span><span class="st">'jet'</span>, s<span class="op">=</span><span class="dv">15</span>, vmin<span class="op">=-</span><span class="fl">0.5</span>, vmax<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(xb_gtsm)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(yb_gtsm)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    ax.set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    ax.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(labelsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    ax.set_title(TS_GT[t_idx].strftime(<span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M'</span>), fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">&gt;=</span> <span class="dv">3</span>:  <span class="co"># Bottom row</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        ax.set_xlabel(<span class="st">'Longitude (deg)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:  <span class="co"># Left column</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        ax.set_ylabel(<span class="st">'Latitude (deg)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Add vertical colorbar at far right</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>cbar_ax <span class="op">=</span> fig.add_subplot(gs[:, <span class="dv">3</span>])</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>cbar <span class="op">=</span> plt.colorbar(scatter, cax<span class="op">=</span>cbar_ax, orientation<span class="op">=</span><span class="st">'vertical'</span>)</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>cbar.set_label(<span class="st">'Surge (m)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>cbar.ax.tick_params(labelsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>plt.tight_layout(rect<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.97</span>, <span class="dv">1</span>])  <span class="co"># Leave space for colorbar</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Save figure</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>fig_file <span class="op">=</span> os.path.join(output_dir, <span class="ss">f'maps_storm</span><span class="sc">{</span>storm_num<span class="sc">}</span><span class="ss">_gtsm_surge.png'</span>)</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>plt.savefig(fig_file, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Figure saved to </span><span class="sc">{</span>fig_file<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_96484/1103341445.py:27: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout(rect=[0, 0, 0.97, 1])  # Leave space for colorbar</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div id="plot-gtsm-surge-storm12-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="maps_files/figure-html/plot-gtsm-surge-storm12-output-2.png" class="img-fluid figure-img"></p>
+<figcaption>GTSM reanalysis surge maps at 6 time steps around Storm 12 closure event</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Figure saved to output/maps_storm12_gtsm_surge.png</code></pre>
+</div>
+<div id="plot-gtsm-surge-storm12-2" class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Time Step 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Time Step 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Time Step 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Time Step 4</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">Time Step 5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false">Time Step 6</a></li></ul>
 <div class="tab-content">
@@ -537,6 +593,85 @@ Time indices for GTSM plots:
 <section id="storm-12---era5-meteorological-maps" class="level3">
 <h3 class="anchored" data-anchor-id="storm-12---era5-meteorological-maps">Storm 12 - ERA5 Meteorological Maps</h3>
 <p>This figure shows ERA5 reanalysis pressure fields and wind vectors at 6 time steps around the closure event, showing the meteorological conditions that drove the surge.</p>
+<div id="plot-era5-met-storm12" class="cell" data-fig-height="10" data-fig-width="16" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.gridspec <span class="im">as</span> gridspec</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>int_skip <span class="op">=</span> <span class="dv">3</span>  <span class="co"># Skip every 3rd grid point for wind vectors</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data for all time steps</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>X_sub <span class="op">=</span> X_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>]</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>Y_sub <span class="op">=</span> Y_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>]</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>X_vec <span class="op">=</span> X_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip]</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>Y_vec <span class="op">=</span> Y_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip]</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure with 2x3 grid + colorbar</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">10</span>))</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>gs <span class="op">=</span> gridspec.GridSpec(<span class="dv">2</span>, <span class="dv">4</span>, width_ratios<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">0.06</span>], wspace<span class="op">=</span><span class="fl">0.3</span>, hspace<span class="op">=</span><span class="fl">0.25</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> [fig.add_subplot(gs[i <span class="op">//</span> <span class="dv">3</span>, i <span class="op">%</span> <span class="dv">3</span>]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>)]</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot each time step</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>ims <span class="op">=</span> []</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, t_idx <span class="kw">in</span> <span class="bu">enumerate</span>(t_met):</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axes[i]</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get data for this time step</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    P_sub <span class="op">=</span> P_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, t_idx] <span class="op">/</span> <span class="dv">100</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    U_vec <span class="op">=</span> U_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, t_idx]</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    V_vec <span class="op">=</span> V_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, t_idx]</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot pressure field</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    im <span class="op">=</span> ax.pcolormesh(X_sub, Y_sub, P_sub, cmap<span class="op">=</span><span class="st">'jet'</span>, shading<span class="op">=</span><span class="st">'gouraud'</span>, vmin<span class="op">=</span><span class="dv">967</span>, vmax<span class="op">=</span><span class="dv">1020</span>)</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    ims.append(im)</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot wind vectors</span></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    ax.quiver(X_vec, Y_vec, U_vec, V_vec, color<span class="op">=</span><span class="st">'k'</span>, scale<span class="op">=</span><span class="dv">600</span>, width<span class="op">=</span><span class="fl">0.002</span>)</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Formatting</span></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(xb_met)</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(yb_met)</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>    ax.set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>    ax.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(labelsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>    ax.set_title(TS_MET[t_idx].strftime(<span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M'</span>), fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">&gt;=</span> <span class="dv">3</span>:  <span class="co"># Bottom row</span></span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>        ax.set_xlabel(<span class="st">'Longitude (deg)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:  <span class="co"># Left column</span></span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a>        ax.set_ylabel(<span class="st">'Latitude (deg)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Add vertical colorbar at far right</span></span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>cbar_ax <span class="op">=</span> fig.add_subplot(gs[:, <span class="dv">3</span>])</span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>cbar <span class="op">=</span> plt.colorbar(ims[<span class="dv">0</span>], cax<span class="op">=</span>cbar_ax, orientation<span class="op">=</span><span class="st">'vertical'</span>)</span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>cbar.set_label(<span class="st">'Pressure (hPa)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>cbar.ax.tick_params(labelsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a>plt.tight_layout(rect<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.97</span>, <span class="dv">1</span>])  <span class="co"># Leave space for colorbar</span></span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Save figure</span></span>
+<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a>fig_file <span class="op">=</span> os.path.join(output_dir, <span class="ss">f'maps_storm</span><span class="sc">{</span>storm_num<span class="sc">}</span><span class="ss">_era5_meteorology.png'</span>)</span>
+<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a>plt.savefig(fig_file, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
+<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Figure saved to </span><span class="sc">{</span>fig_file<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_96484/4223639447.py:52: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout(rect=[0, 0, 0.97, 1])  # Leave space for colorbar</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div id="plot-era5-met-storm12-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="maps_files/figure-html/plot-era5-met-storm12-output-2.png" class="img-fluid figure-img"></p>
+<figcaption>ERA5 reanalysis pressure and wind fields at 6 time steps around Storm 12 closure event</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Figure saved to output/maps_storm12_era5_meteorology.png</code></pre>
+</div>
+<div id="plot-era5-met-storm12-2" class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Time Step 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Time Step 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Time Step 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false">Time Step 4</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-5" role="tab" aria-controls="tabset-2-5" aria-selected="false">Time Step 5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-6" role="tab" aria-controls="tabset-2-6" aria-selected="false">Time Step 6</a></li></ul>
 <div class="tab-content">
@@ -597,42 +732,42 @@ Time indices for GTSM plots:
 <p>Storm 25 corresponds to closure event index 24 (0-indexed) and uses datasets with prefix “25_” in the 2_DATA directory.</p>
 <section id="storm-25---load-gtsm-surge-data" class="level3">
 <h3 class="anchored" data-anchor-id="storm-25---load-gtsm-surge-data">Storm 25 - Load GTSM Surge Data</h3>
-<div id="load-gtsm-data-storm25" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Storm 25 configuration</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> <span class="dv">24</span>  <span class="co"># Closure event index (0-indexed, so e=24 means Storm 25)</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>storm_num <span class="op">=</span> <span class="dv">25</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>prefix <span class="op">=</span> <span class="st">'25_'</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>closure_date <span class="op">=</span> OCD[e]</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>gtsm_start_date <span class="op">=</span> closure_date  <span class="co"># Start date for GTSM plots (use closure date)</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>met_start_date <span class="op">=</span> closure_date <span class="op">-</span> timedelta(hours<span class="op">=</span><span class="dv">6</span>)  <span class="co"># Start date for meteorological plots</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="sc">{</span><span class="st">'='</span><span class="op">*</span><span class="dv">60</span><span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Processing Storm </span><span class="sc">{</span>storm_num<span class="sc">}</span><span class="ss"> (event index </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">, prefix: </span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">)"</span>)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'='</span><span class="op">*</span><span class="dv">60</span><span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Closure date: </span><span class="sc">{</span>closure_date<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Load GTSM reanalysis surge data</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>file_in <span class="op">=</span> os.path.join(data_dir, <span class="st">'3_CODEC_GTSM'</span>, <span class="ss">f'</span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">reanalysis_surge_hourly_2013_12_v3.nc'</span>)</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Loading GTSM data from: </span><span class="sc">{</span>file_in<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>ds_gtsm <span class="op">=</span> xr.open_dataset(file_in)</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract data</span></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>TS_GT <span class="op">=</span> pd.to_datetime(ds_gtsm[<span class="st">'time'</span>].values)</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>X_GT <span class="op">=</span> ds_gtsm[<span class="st">'station_x_coordinate'</span>].values</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>Y_GT <span class="op">=</span> ds_gtsm[<span class="st">'station_y_coordinate'</span>].values</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>SU_GT <span class="op">=</span> ds_gtsm[<span class="st">'surge'</span>].values</span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to spatial bounds</span></span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> (X_GT <span class="op">&gt;=</span> xb_gtsm[<span class="dv">0</span>]) <span class="op">&amp;</span> (X_GT <span class="op">&lt;=</span> xb_gtsm[<span class="dv">1</span>]) <span class="op">&amp;</span> (Y_GT <span class="op">&gt;=</span> yb_gtsm[<span class="dv">0</span>]) <span class="op">&amp;</span> (Y_GT <span class="op">&lt;=</span> yb_gtsm[<span class="dv">1</span>])</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>X_GT <span class="op">=</span> X_GT[mask]</span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>Y_GT <span class="op">=</span> Y_GT[mask]</span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>SU_GT <span class="op">=</span> SU_GT[:, mask]  <span class="co"># Index stations (second axis), not time (first axis)</span></span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  GTSM data loaded:"</span>)</span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    Time points: </span><span class="sc">{</span><span class="bu">len</span>(TS_GT)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    Stations: </span><span class="sc">{</span><span class="bu">len</span>(X_GT)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    Time range: </span><span class="sc">{</span>TS_GT[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>TS_GT[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="load-gtsm-data-storm25" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Storm 25 configuration</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> <span class="dv">24</span>  <span class="co"># Closure event index (0-indexed, so e=24 means Storm 25)</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>storm_num <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>prefix <span class="op">=</span> <span class="st">'25_'</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>closure_date <span class="op">=</span> OCD[e]</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>gtsm_start_date <span class="op">=</span> closure_date  <span class="co"># Start date for GTSM plots (use closure date)</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>met_start_date <span class="op">=</span> closure_date <span class="op">-</span> timedelta(hours<span class="op">=</span><span class="dv">6</span>)  <span class="co"># Start date for meteorological plots</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="sc">{</span><span class="st">'='</span><span class="op">*</span><span class="dv">60</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Processing Storm </span><span class="sc">{</span>storm_num<span class="sc">}</span><span class="ss"> (event index </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">, prefix: </span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'='</span><span class="op">*</span><span class="dv">60</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Closure date: </span><span class="sc">{</span>closure_date<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Load GTSM reanalysis surge data</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>file_in <span class="op">=</span> os.path.join(data_dir, <span class="st">'3_CODEC_GTSM'</span>, <span class="ss">f'</span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">reanalysis_surge_hourly_2013_12_v3.nc'</span>)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Loading GTSM data from: </span><span class="sc">{</span>file_in<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>ds_gtsm <span class="op">=</span> xr.open_dataset(file_in)</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract data</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>TS_GT <span class="op">=</span> pd.to_datetime(ds_gtsm[<span class="st">'time'</span>].values)</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>X_GT <span class="op">=</span> ds_gtsm[<span class="st">'station_x_coordinate'</span>].values</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>Y_GT <span class="op">=</span> ds_gtsm[<span class="st">'station_y_coordinate'</span>].values</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>SU_GT <span class="op">=</span> ds_gtsm[<span class="st">'surge'</span>].values</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to spatial bounds</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> (X_GT <span class="op">&gt;=</span> xb_gtsm[<span class="dv">0</span>]) <span class="op">&amp;</span> (X_GT <span class="op">&lt;=</span> xb_gtsm[<span class="dv">1</span>]) <span class="op">&amp;</span> (Y_GT <span class="op">&gt;=</span> yb_gtsm[<span class="dv">0</span>]) <span class="op">&amp;</span> (Y_GT <span class="op">&lt;=</span> yb_gtsm[<span class="dv">1</span>])</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>X_GT <span class="op">=</span> X_GT[mask]</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>Y_GT <span class="op">=</span> Y_GT[mask]</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>SU_GT <span class="op">=</span> SU_GT[:, mask]  <span class="co"># Index stations (second axis), not time (first axis)</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  GTSM data loaded:"</span>)</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    Time points: </span><span class="sc">{</span><span class="bu">len</span>(TS_GT)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    Stations: </span><span class="sc">{</span><span class="bu">len</span>(X_GT)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    Time range: </span><span class="sc">{</span>TS_GT[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>TS_GT[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 ============================================================
@@ -650,74 +785,74 @@ Loading GTSM data from: ../2_DATA/3_CODEC_GTSM/25_reanalysis_surge_hourly_2013_1
 </section>
 <section id="storm-25---load-era5-meteorological-data" class="level3">
 <h3 class="anchored" data-anchor-id="storm-25---load-era5-meteorological-data">Storm 25 - Load ERA5 Meteorological Data</h3>
-<div id="load-era5-data-storm25" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load ERA5 meteorological data</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>filein_met <span class="op">=</span> os.path.join(data_dir, <span class="st">'4_ERA5'</span>, <span class="ss">f'</span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">ERA5_2013_12.nc'</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Loading ERA5 data from: </span><span class="sc">{</span>filein_met<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>ds_met <span class="op">=</span> xr.open_dataset(filein_met)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract data</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>LON <span class="op">=</span> ds_met[<span class="st">'longitude'</span>].values</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>LAT <span class="op">=</span> ds_met[<span class="st">'latitude'</span>].values</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>P_MET <span class="op">=</span> ds_met[<span class="st">'msl'</span>].values  <span class="co"># Mean sea level pressure</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>U_MET <span class="op">=</span> ds_met[<span class="st">'u10'</span>].values   <span class="co"># 10m u-wind component</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>V_MET <span class="op">=</span> ds_met[<span class="st">'v10'</span>].values   <span class="co"># 10m v-wind component</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>TS_MET <span class="op">=</span> pd.to_datetime(ds_met[<span class="st">'valid_time'</span>].values)</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Check and handle dimension order - ERA5 typically has (time, lat, lon) or (time, lon, lat)</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># We need to ensure arrays are in (lon, lat, time) order for consistent indexing</span></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Original array shapes:"</span>)</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    P_MET: </span><span class="sc">{</span>P_MET<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    U_MET: </span><span class="sc">{</span>U_MET<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    V_MET: </span><span class="sc">{</span>V_MET<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Get dimension names to determine order</span></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>dims <span class="op">=</span> ds_met[<span class="st">'msl'</span>].dims</span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    Dimension order: </span><span class="sc">{</span>dims<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder to (lon, lat, time) if needed</span></span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(P_MET.shape) <span class="op">==</span> <span class="dv">3</span>:</span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if time dimension is first (could be 'time' or 'valid_time')</span></span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">'time'</span> <span class="kw">in</span> dims[<span class="dv">0</span>].lower() <span class="kw">or</span> dims[<span class="dv">0</span>] <span class="op">==</span> <span class="st">'valid_time'</span>:</span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If time is first, transpose to (lon, lat, time) or (lat, lon, time)</span></span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dims[<span class="dv">1</span>] <span class="op">==</span> <span class="st">'latitude'</span> <span class="kw">and</span> dims[<span class="dv">2</span>] <span class="op">==</span> <span class="st">'longitude'</span>:</span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>            <span class="co"># (time, lat, lon) -&gt; (lon, lat, time)</span></span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>            P_MET <span class="op">=</span> np.transpose(P_MET, (<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>            U_MET <span class="op">=</span> np.transpose(U_MET, (<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>            V_MET <span class="op">=</span> np.transpose(V_MET, (<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> dims[<span class="dv">1</span>] <span class="op">==</span> <span class="st">'longitude'</span> <span class="kw">and</span> dims[<span class="dv">2</span>] <span class="op">==</span> <span class="st">'latitude'</span>:</span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>            <span class="co"># (time, lon, lat) -&gt; (lon, lat, time)</span></span>
-<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>            P_MET <span class="op">=</span> np.transpose(P_MET, (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
-<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>            U_MET <span class="op">=</span> np.transpose(U_MET, (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
-<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>            V_MET <span class="op">=</span> np.transpose(V_MET, (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
-<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="st">'time'</span> <span class="kw">in</span> dims[<span class="dv">2</span>].lower() <span class="kw">or</span> dims[<span class="dv">2</span>] <span class="op">==</span> <span class="st">'valid_time'</span>:</span>
-<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Already in (lon, lat, time) or (lat, lon, time) order</span></span>
-<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dims[<span class="dv">0</span>] <span class="op">==</span> <span class="st">'latitude'</span> <span class="kw">and</span> dims[<span class="dv">1</span>] <span class="op">==</span> <span class="st">'longitude'</span>:</span>
-<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>            <span class="co"># (lat, lon, time) -&gt; (lon, lat, time)</span></span>
-<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>            P_MET <span class="op">=</span> np.transpose(P_MET, (<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span>
-<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>            U_MET <span class="op">=</span> np.transpose(U_MET, (<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span>
-<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>            V_MET <span class="op">=</span> np.transpose(V_MET, (<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span>
-<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  After reordering:"</span>)</span>
-<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    P_MET: </span><span class="sc">{</span>P_MET<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> (should be lon x lat x time)"</span>)</span>
-<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Create meshgrid</span></span>
-<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>X_MET, Y_MET <span class="op">=</span> np.meshgrid(LON, LAT)</span>
-<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>X_MET <span class="op">=</span> X_MET.T</span>
-<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>Y_MET <span class="op">=</span> Y_MET.T</span>
-<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to spatial bounds (for display)</span></span>
-<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a>lon_mask <span class="op">=</span> (LON <span class="op">&gt;=</span> xb_met[<span class="dv">0</span>]) <span class="op">&amp;</span> (LON <span class="op">&lt;=</span> xb_met[<span class="dv">1</span>])</span>
-<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a>lat_mask <span class="op">=</span> (LAT <span class="op">&gt;=</span> yb_met[<span class="dv">0</span>]) <span class="op">&amp;</span> (LAT <span class="op">&lt;=</span> yb_met[<span class="dv">1</span>])</span>
-<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a>lon_idx <span class="op">=</span> np.where(lon_mask)[<span class="dv">0</span>]</span>
-<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a>lat_idx <span class="op">=</span> np.where(lat_mask)[<span class="dv">0</span>]</span>
-<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  ERA5 data loaded:"</span>)</span>
-<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    Time points: </span><span class="sc">{</span><span class="bu">len</span>(TS_MET)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    Grid: </span><span class="sc">{</span><span class="bu">len</span>(LON)<span class="sc">}</span><span class="ss"> x </span><span class="sc">{</span><span class="bu">len</span>(LAT)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    Time range: </span><span class="sc">{</span>TS_MET[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>TS_MET[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    P_MET final shape: </span><span class="sc">{</span>P_MET<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> (lon x lat x time)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="load-era5-data-storm25" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load ERA5 meteorological data</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>filein_met <span class="op">=</span> os.path.join(data_dir, <span class="st">'4_ERA5'</span>, <span class="ss">f'</span><span class="sc">{</span>prefix<span class="sc">}</span><span class="ss">ERA5_2013_12.nc'</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Loading ERA5 data from: </span><span class="sc">{</span>filein_met<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>ds_met <span class="op">=</span> xr.open_dataset(filein_met)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract data</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>LON <span class="op">=</span> ds_met[<span class="st">'longitude'</span>].values</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>LAT <span class="op">=</span> ds_met[<span class="st">'latitude'</span>].values</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>P_MET <span class="op">=</span> ds_met[<span class="st">'msl'</span>].values  <span class="co"># Mean sea level pressure</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>U_MET <span class="op">=</span> ds_met[<span class="st">'u10'</span>].values   <span class="co"># 10m u-wind component</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>V_MET <span class="op">=</span> ds_met[<span class="st">'v10'</span>].values   <span class="co"># 10m v-wind component</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>TS_MET <span class="op">=</span> pd.to_datetime(ds_met[<span class="st">'valid_time'</span>].values)</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Check and handle dimension order - ERA5 typically has (time, lat, lon) or (time, lon, lat)</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="co"># We need to ensure arrays are in (lon, lat, time) order for consistent indexing</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Original array shapes:"</span>)</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    P_MET: </span><span class="sc">{</span>P_MET<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    U_MET: </span><span class="sc">{</span>U_MET<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    V_MET: </span><span class="sc">{</span>V_MET<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Get dimension names to determine order</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>dims <span class="op">=</span> ds_met[<span class="st">'msl'</span>].dims</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    Dimension order: </span><span class="sc">{</span>dims<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Reorder to (lon, lat, time) if needed</span></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(P_MET.shape) <span class="op">==</span> <span class="dv">3</span>:</span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if time dimension is first (could be 'time' or 'valid_time')</span></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">'time'</span> <span class="kw">in</span> dims[<span class="dv">0</span>].lower() <span class="kw">or</span> dims[<span class="dv">0</span>] <span class="op">==</span> <span class="st">'valid_time'</span>:</span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If time is first, transpose to (lon, lat, time) or (lat, lon, time)</span></span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dims[<span class="dv">1</span>] <span class="op">==</span> <span class="st">'latitude'</span> <span class="kw">and</span> dims[<span class="dv">2</span>] <span class="op">==</span> <span class="st">'longitude'</span>:</span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>            <span class="co"># (time, lat, lon) -&gt; (lon, lat, time)</span></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>            P_MET <span class="op">=</span> np.transpose(P_MET, (<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>            U_MET <span class="op">=</span> np.transpose(U_MET, (<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>            V_MET <span class="op">=</span> np.transpose(V_MET, (<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> dims[<span class="dv">1</span>] <span class="op">==</span> <span class="st">'longitude'</span> <span class="kw">and</span> dims[<span class="dv">2</span>] <span class="op">==</span> <span class="st">'latitude'</span>:</span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>            <span class="co"># (time, lon, lat) -&gt; (lon, lat, time)</span></span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>            P_MET <span class="op">=</span> np.transpose(P_MET, (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>            U_MET <span class="op">=</span> np.transpose(U_MET, (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>            V_MET <span class="op">=</span> np.transpose(V_MET, (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="st">'time'</span> <span class="kw">in</span> dims[<span class="dv">2</span>].lower() <span class="kw">or</span> dims[<span class="dv">2</span>] <span class="op">==</span> <span class="st">'valid_time'</span>:</span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Already in (lon, lat, time) or (lat, lon, time) order</span></span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dims[<span class="dv">0</span>] <span class="op">==</span> <span class="st">'latitude'</span> <span class="kw">and</span> dims[<span class="dv">1</span>] <span class="op">==</span> <span class="st">'longitude'</span>:</span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a>            <span class="co"># (lat, lon, time) -&gt; (lon, lat, time)</span></span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>            P_MET <span class="op">=</span> np.transpose(P_MET, (<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a>            U_MET <span class="op">=</span> np.transpose(U_MET, (<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>            V_MET <span class="op">=</span> np.transpose(V_MET, (<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>))</span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  After reordering:"</span>)</span>
+<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    P_MET: </span><span class="sc">{</span>P_MET<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> (should be lon x lat x time)"</span>)</span>
+<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Create meshgrid</span></span>
+<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a>X_MET, Y_MET <span class="op">=</span> np.meshgrid(LON, LAT)</span>
+<span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a>X_MET <span class="op">=</span> X_MET.T</span>
+<span id="cb21-55"><a href="#cb21-55" aria-hidden="true" tabindex="-1"></a>Y_MET <span class="op">=</span> Y_MET.T</span>
+<span id="cb21-56"><a href="#cb21-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to spatial bounds (for display)</span></span>
+<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a>lon_mask <span class="op">=</span> (LON <span class="op">&gt;=</span> xb_met[<span class="dv">0</span>]) <span class="op">&amp;</span> (LON <span class="op">&lt;=</span> xb_met[<span class="dv">1</span>])</span>
+<span id="cb21-59"><a href="#cb21-59" aria-hidden="true" tabindex="-1"></a>lat_mask <span class="op">=</span> (LAT <span class="op">&gt;=</span> yb_met[<span class="dv">0</span>]) <span class="op">&amp;</span> (LAT <span class="op">&lt;=</span> yb_met[<span class="dv">1</span>])</span>
+<span id="cb21-60"><a href="#cb21-60" aria-hidden="true" tabindex="-1"></a>lon_idx <span class="op">=</span> np.where(lon_mask)[<span class="dv">0</span>]</span>
+<span id="cb21-61"><a href="#cb21-61" aria-hidden="true" tabindex="-1"></a>lat_idx <span class="op">=</span> np.where(lat_mask)[<span class="dv">0</span>]</span>
+<span id="cb21-62"><a href="#cb21-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-63"><a href="#cb21-63" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  ERA5 data loaded:"</span>)</span>
+<span id="cb21-64"><a href="#cb21-64" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    Time points: </span><span class="sc">{</span><span class="bu">len</span>(TS_MET)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-65"><a href="#cb21-65" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    Grid: </span><span class="sc">{</span><span class="bu">len</span>(LON)<span class="sc">}</span><span class="ss"> x </span><span class="sc">{</span><span class="bu">len</span>(LAT)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-66"><a href="#cb21-66" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    Time range: </span><span class="sc">{</span>TS_MET[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>TS_MET[<span class="op">-</span><span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-67"><a href="#cb21-67" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"    P_MET final shape: </span><span class="sc">{</span>P_MET<span class="sc">.</span>shape<span class="sc">}</span><span class="ss"> (lon x lat x time)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Loading ERA5 data from: ../2_DATA/4_ERA5/25_ERA5_2013_12.nc
@@ -738,30 +873,30 @@ Loading ERA5 data from: ../2_DATA/4_ERA5/25_ERA5_2013_12.nc
 </section>
 <section id="storm-25---find-time-indices-around-closure-event" class="level3">
 <h3 class="anchored" data-anchor-id="storm-25---find-time-indices-around-closure-event">Storm 25 - Find Time Indices Around Closure Event</h3>
-<div id="find-time-indices-storm25" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find time indices for GTSM plots</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the time in TS_GT closest to the specified start date</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>time_diffs <span class="op">=</span> np.<span class="bu">abs</span>([(t <span class="op">-</span> gtsm_start_date).total_seconds() <span class="cf">for</span> t <span class="kw">in</span> TS_GT])</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>t_gtsm_base <span class="op">=</span> np.argmin(time_diffs)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create 6 time steps starting from base time: 0, +tint, +2*tint, +3*tint, +4*tint, +5*tint</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>t_gtsm <span class="op">=</span> [t_gtsm_base, t_gtsm_base <span class="op">+</span> tint, t_gtsm_base <span class="op">+</span> tint<span class="op">*</span><span class="dv">2</span>, </span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>          t_gtsm_base <span class="op">+</span> tint<span class="op">*</span><span class="dv">3</span>, t_gtsm_base <span class="op">+</span> tint<span class="op">*</span><span class="dv">4</span>, t_gtsm_base <span class="op">+</span> tint<span class="op">*</span><span class="dv">5</span>]</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>t_gtsm <span class="op">=</span> [<span class="bu">max</span>(<span class="dv">0</span>, <span class="bu">min</span>(t, <span class="bu">len</span>(TS_GT)<span class="op">-</span><span class="dv">1</span>)) <span class="cf">for</span> t <span class="kw">in</span> t_gtsm]  <span class="co"># Clamp to valid range</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Time indices for GTSM plots:"</span>)</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Start date: </span><span class="sc">{</span>gtsm_start_date<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Base time: </span><span class="sc">{</span>TS_GT[t_gtsm_base]<span class="sc">}</span><span class="ss"> (index </span><span class="sc">{</span>t_gtsm_base<span class="sc">}</span><span class="ss">)"</span>)</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, t_idx <span class="kw">in</span> <span class="bu">enumerate</span>(t_gtsm):</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Time step </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>TS_GT[t_idx]<span class="sc">}</span><span class="ss"> (index </span><span class="sc">{</span>t_idx<span class="sc">}</span><span class="ss">)"</span>)</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Find time indices for meteorological plots</span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>max_time_idx <span class="op">=</span> P_MET.shape[<span class="dv">2</span>] <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>valid_ts_met <span class="op">=</span> TS_MET[:max_time_idx<span class="op">+</span><span class="dv">1</span>]</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Find 6 time steps around the closure</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>target_times <span class="op">=</span> [met_start_date <span class="op">+</span> timedelta(hours<span class="op">=</span>h) <span class="cf">for</span> h <span class="kw">in</span> [<span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">24</span>, <span class="dv">36</span>, <span class="dv">48</span>, <span class="dv">60</span>]]</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>t_met <span class="op">=</span> [np.argmin(np.<span class="bu">abs</span>([(t <span class="op">-</span> target_time).total_seconds() <span class="cf">for</span> t <span class="kw">in</span> valid_ts_met])) <span class="cf">for</span> target_time <span class="kw">in</span> target_times]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="find-time-indices-storm25" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find time indices for GTSM plots</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the time in TS_GT closest to the specified start date</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>time_diffs <span class="op">=</span> np.<span class="bu">abs</span>([(t <span class="op">-</span> gtsm_start_date).total_seconds() <span class="cf">for</span> t <span class="kw">in</span> TS_GT])</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>t_gtsm_base <span class="op">=</span> np.argmin(time_diffs)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create 6 time steps starting from base time: 0, +tint, +2*tint, +3*tint, +4*tint, +5*tint</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>t_gtsm <span class="op">=</span> [t_gtsm_base, t_gtsm_base <span class="op">+</span> tint, t_gtsm_base <span class="op">+</span> tint<span class="op">*</span><span class="dv">2</span>, </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>          t_gtsm_base <span class="op">+</span> tint<span class="op">*</span><span class="dv">3</span>, t_gtsm_base <span class="op">+</span> tint<span class="op">*</span><span class="dv">4</span>, t_gtsm_base <span class="op">+</span> tint<span class="op">*</span><span class="dv">5</span>]</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>t_gtsm <span class="op">=</span> [<span class="bu">max</span>(<span class="dv">0</span>, <span class="bu">min</span>(t, <span class="bu">len</span>(TS_GT)<span class="op">-</span><span class="dv">1</span>)) <span class="cf">for</span> t <span class="kw">in</span> t_gtsm]  <span class="co"># Clamp to valid range</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Time indices for GTSM plots:"</span>)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Start date: </span><span class="sc">{</span>gtsm_start_date<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Base time: </span><span class="sc">{</span>TS_GT[t_gtsm_base]<span class="sc">}</span><span class="ss"> (index </span><span class="sc">{</span>t_gtsm_base<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, t_idx <span class="kw">in</span> <span class="bu">enumerate</span>(t_gtsm):</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Time step </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>TS_GT[t_idx]<span class="sc">}</span><span class="ss"> (index </span><span class="sc">{</span>t_idx<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Find time indices for meteorological plots</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>max_time_idx <span class="op">=</span> P_MET.shape[<span class="dv">2</span>] <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>valid_ts_met <span class="op">=</span> TS_MET[:max_time_idx<span class="op">+</span><span class="dv">1</span>]</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Find 6 time steps around the closure</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>target_times <span class="op">=</span> [met_start_date <span class="op">+</span> timedelta(hours<span class="op">=</span>h) <span class="cf">for</span> h <span class="kw">in</span> [<span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">24</span>, <span class="dv">36</span>, <span class="dv">48</span>, <span class="dv">60</span>]]</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>t_met <span class="op">=</span> [np.argmin(np.<span class="bu">abs</span>([(t <span class="op">-</span> target_time).total_seconds() <span class="cf">for</span> t <span class="kw">in</span> valid_ts_met])) <span class="cf">for</span> target_time <span class="kw">in</span> target_times]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Time indices for GTSM plots:
@@ -779,6 +914,60 @@ Time indices for GTSM plots:
 <section id="storm-25---gtsm-surge-maps" class="level3">
 <h3 class="anchored" data-anchor-id="storm-25---gtsm-surge-maps">Storm 25 - GTSM Surge Maps</h3>
 <p>This figure shows spatial surge patterns from GTSM reanalysis at 6 time steps around the closure event, illustrating how surge developed and propagated.</p>
+<div id="plot-gtsm-surge-storm25" class="cell" data-fig-height="10" data-fig-width="16" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.gridspec <span class="im">as</span> gridspec</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">10</span>))</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>gs <span class="op">=</span> gridspec.GridSpec(<span class="dv">2</span>, <span class="dv">4</span>, width_ratios<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">0.06</span>], wspace<span class="op">=</span><span class="fl">0.3</span>, hspace<span class="op">=</span><span class="fl">0.25</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> [fig.add_subplot(gs[i <span class="op">//</span> <span class="dv">3</span>, i <span class="op">%</span> <span class="dv">3</span>]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>)]</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, t_idx <span class="kw">in</span> <span class="bu">enumerate</span>(t_gtsm):</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axes[i]</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    scatter <span class="op">=</span> ax.scatter(X_GT, Y_GT, c<span class="op">=</span>SU_GT[t_idx, :], cmap<span class="op">=</span><span class="st">'jet'</span>, s<span class="op">=</span><span class="dv">15</span>, vmin<span class="op">=-</span><span class="fl">0.5</span>, vmax<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(xb_gtsm)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(yb_gtsm)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    ax.set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    ax.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(labelsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    ax.set_title(TS_GT[t_idx].strftime(<span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M'</span>), fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">&gt;=</span> <span class="dv">3</span>:  <span class="co"># Bottom row</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>        ax.set_xlabel(<span class="st">'Longitude (deg)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:  <span class="co"># Left column</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>        ax.set_ylabel(<span class="st">'Latitude (deg)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Add vertical colorbar at far right</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>cbar_ax <span class="op">=</span> fig.add_subplot(gs[:, <span class="dv">3</span>])</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>cbar <span class="op">=</span> plt.colorbar(scatter, cax<span class="op">=</span>cbar_ax, orientation<span class="op">=</span><span class="st">'vertical'</span>)</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>cbar.set_label(<span class="st">'Surge (m)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>cbar.ax.tick_params(labelsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>plt.tight_layout(rect<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.97</span>, <span class="dv">1</span>])  <span class="co"># Leave space for colorbar</span></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Save figure</span></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>fig_file <span class="op">=</span> os.path.join(output_dir, <span class="ss">f'maps_storm</span><span class="sc">{</span>storm_num<span class="sc">}</span><span class="ss">_gtsm_surge.png'</span>)</span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>plt.savefig(fig_file, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Figure saved to </span><span class="sc">{</span>fig_file<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_96484/1103341445.py:27: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout(rect=[0, 0, 0.97, 1])  # Leave space for colorbar</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div id="plot-gtsm-surge-storm25-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="maps_files/figure-html/plot-gtsm-surge-storm25-output-2.png" class="img-fluid figure-img"></p>
+<figcaption>GTSM reanalysis surge maps at 6 time steps around Storm 25 closure event</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Figure saved to output/maps_storm25_gtsm_surge.png</code></pre>
+</div>
+<div id="plot-gtsm-surge-storm25-2" class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Time Step 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Time Step 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Time Step 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false">Time Step 4</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-5" role="tab" aria-controls="tabset-3-5" aria-selected="false">Time Step 5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-6" role="tab" aria-controls="tabset-3-6" aria-selected="false">Time Step 6</a></li></ul>
 <div class="tab-content">
@@ -836,6 +1025,102 @@ Time indices for GTSM plots:
 <section id="storm-25---era5-meteorological-maps" class="level3">
 <h3 class="anchored" data-anchor-id="storm-25---era5-meteorological-maps">Storm 25 - ERA5 Meteorological Maps</h3>
 <p>This figure shows ERA5 reanalysis pressure fields and wind vectors at 6 time steps around the closure event, showing the meteorological conditions that drove the surge.</p>
+<div id="plot-era5-met-storm25" class="cell" data-fig-height="10" data-fig-width="16" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.gridspec <span class="im">as</span> gridspec</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>int_skip <span class="op">=</span> <span class="dv">3</span>  <span class="co"># Skip every 3rd grid point for wind vectors</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data for all time steps</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>X_sub <span class="op">=</span> X_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>]</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>Y_sub <span class="op">=</span> Y_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>]</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>X_vec <span class="op">=</span> X_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip]</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>Y_vec <span class="op">=</span> Y_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip]</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure with 2x3 grid + colorbar</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">10</span>))</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>gs <span class="op">=</span> gridspec.GridSpec(<span class="dv">2</span>, <span class="dv">4</span>, width_ratios<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">0.06</span>], wspace<span class="op">=</span><span class="fl">0.3</span>, hspace<span class="op">=</span><span class="fl">0.25</span>)</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> [fig.add_subplot(gs[i <span class="op">//</span> <span class="dv">3</span>, i <span class="op">%</span> <span class="dv">3</span>], projection<span class="op">=</span>ccrs.PlateCarree()) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>)]</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot each time step</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>ims <span class="op">=</span> []</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, t_idx <span class="kw">in</span> <span class="bu">enumerate</span>(t_met):</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axes[i]</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add white coastline and borders</span></span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeature.COASTLINE.with_scale(<span class="st">'50m'</span>), linewidth<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span><span class="st">'white'</span>)</span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeature.BORDERS.with_scale(<span class="st">'50m'</span>), linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'white'</span>)</span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get data for this time step</span></span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>    P_sub <span class="op">=</span> P_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, t_idx] <span class="op">/</span> <span class="dv">100</span></span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>    U_vec <span class="op">=</span> U_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, t_idx]</span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>    V_vec <span class="op">=</span> V_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, t_idx]</span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot pressure field</span></span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a>    im <span class="op">=</span> ax.pcolormesh(X_sub, Y_sub, P_sub, cmap<span class="op">=</span><span class="st">'jet'</span>, shading<span class="op">=</span><span class="st">'gouraud'</span>, </span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a>                       vmin<span class="op">=</span><span class="dv">967</span>, vmax<span class="op">=</span><span class="dv">1020</span>, transform<span class="op">=</span>ccrs.PlateCarree())</span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a>    ims.append(im)</span>
+<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot wind vectors</span></span>
+<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a>    ax.quiver(X_vec, Y_vec, U_vec, V_vec, color<span class="op">=</span><span class="st">'k'</span>, scale<span class="op">=</span><span class="dv">600</span>, width<span class="op">=</span><span class="fl">0.002</span>, </span>
+<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a>              transform<span class="op">=</span>ccrs.PlateCarree())</span>
+<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Formatting</span></span>
+<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(xb_met)</span>
+<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(yb_met)</span>
+<span id="cb29-42"><a href="#cb29-42" aria-hidden="true" tabindex="-1"></a>    ax.gridlines(draw_labels<span class="op">=</span><span class="va">False</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'gray'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb29-43"><a href="#cb29-43" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(labelsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a>    ax.set_title(TS_MET[t_idx].strftime(<span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M'</span>), fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-46"><a href="#cb29-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">&gt;=</span> <span class="dv">3</span>:  <span class="co"># Bottom row</span></span>
+<span id="cb29-47"><a href="#cb29-47" aria-hidden="true" tabindex="-1"></a>        ax.set_xlabel(<span class="st">'Longitude (deg)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb29-48"><a href="#cb29-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:  <span class="co"># Left column</span></span>
+<span id="cb29-49"><a href="#cb29-49" aria-hidden="true" tabindex="-1"></a>        ax.set_ylabel(<span class="st">'Latitude (deg)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb29-50"><a href="#cb29-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-51"><a href="#cb29-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Add vertical colorbar at far right</span></span>
+<span id="cb29-52"><a href="#cb29-52" aria-hidden="true" tabindex="-1"></a>cbar_ax <span class="op">=</span> fig.add_subplot(gs[:, <span class="dv">3</span>])</span>
+<span id="cb29-53"><a href="#cb29-53" aria-hidden="true" tabindex="-1"></a>cbar <span class="op">=</span> plt.colorbar(ims[<span class="dv">0</span>], cax<span class="op">=</span>cbar_ax, orientation<span class="op">=</span><span class="st">'vertical'</span>)</span>
+<span id="cb29-54"><a href="#cb29-54" aria-hidden="true" tabindex="-1"></a>cbar.set_label(<span class="st">'Pressure (hPa)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb29-55"><a href="#cb29-55" aria-hidden="true" tabindex="-1"></a>cbar.ax.tick_params(labelsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb29-56"><a href="#cb29-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-57"><a href="#cb29-57" aria-hidden="true" tabindex="-1"></a>plt.tight_layout(rect<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.97</span>, <span class="dv">1</span>])  <span class="co"># Leave space for colorbar</span></span>
+<span id="cb29-58"><a href="#cb29-58" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb29-59"><a href="#cb29-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-60"><a href="#cb29-60" aria-hidden="true" tabindex="-1"></a><span class="co"># Save figure</span></span>
+<span id="cb29-61"><a href="#cb29-61" aria-hidden="true" tabindex="-1"></a>fig_file <span class="op">=</span> os.path.join(output_dir, <span class="ss">f'maps_storm</span><span class="sc">{</span>storm_num<span class="sc">}</span><span class="ss">_era5_meteorology.png'</span>)</span>
+<span id="cb29-62"><a href="#cb29-62" aria-hidden="true" tabindex="-1"></a>plt.savefig(fig_file, dpi<span class="op">=</span><span class="dv">150</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
+<span id="cb29-63"><a href="#cb29-63" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Figure saved to </span><span class="sc">{</span>fig_file<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
+  warnings.warn('facecolor will have no effect as it has been '
+/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
+  warnings.warn('facecolor will have no effect as it has been '
+/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
+  warnings.warn('facecolor will have no effect as it has been '
+/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
+  warnings.warn('facecolor will have no effect as it has been '
+/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
+  warnings.warn('facecolor will have no effect as it has been '
+/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
+  warnings.warn('facecolor will have no effect as it has been '
+/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_96484/1304369954.py:57: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout(rect=[0, 0, 0.97, 1])  # Leave space for colorbar</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div id="plot-era5-met-storm25-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="maps_files/figure-html/plot-era5-met-storm25-output-2.png" class="img-fluid figure-img"></p>
+<figcaption>ERA5 reanalysis pressure and wind fields at 6 time steps around Storm 25 closure event</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Figure saved to output/maps_storm25_era5_meteorology.png</code></pre>
+</div>
+<div id="plot-era5-met-storm25-2" class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Time Step 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Time Step 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">Time Step 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-4" role="tab" aria-controls="tabset-4-4" aria-selected="false">Time Step 4</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-5" role="tab" aria-controls="tabset-4-5" aria-selected="false">Time Step 5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-6" role="tab" aria-controls="tabset-4-6" aria-selected="false">Time Step 6</a></li></ul>
 <div class="tab-content">
