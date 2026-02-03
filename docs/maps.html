@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./eastern_scheldt.html"> 
-<span class="menu-text">Eastern Scheldt Barrier (1984-2023)</span></a>
+<span class="menu-text">Eastern Scheldt Barrier</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./thames.html"> 
@@ -154,10 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#data-loading" id="toc-data-loading" class="nav-link" data-scroll-target="#data-loading">Data Loading</a></li>
-  <li><a href="#storm-12" id="toc-storm-12" class="nav-link" data-scroll-target="#storm-12">Storm 12</a>
+  <li><a href="#storm-12" id="toc-storm-12" class="nav-link active" data-scroll-target="#storm-12">Storm 12</a>
   <ul class="collapse">
   <li><a href="#load-gtsm-surge-data" id="toc-load-gtsm-surge-data" class="nav-link" data-scroll-target="#load-gtsm-surge-data">Load GTSM Surge Data</a></li>
   <li><a href="#load-era5-meteorological-data" id="toc-load-era5-meteorological-data" class="nav-link" data-scroll-target="#load-era5-meteorological-data">Load ERA5 Meteorological Data</a></li>
@@ -199,8 +196,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>This document provides spatial analysis of surge patterns and meteorological conditions for Storm 12 (closure event index 11) and Storm 25 (closure event index 24) for the Eastern Scheldt, converting the MATLAB script <code>master6.m</code> to Python. The analysis:</p>
 <ol type="1">
 <li>Loads barrier closure dates to identify the storm events</li>
@@ -213,9 +208,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ol>
 <p>This provides a comprehensive view of the spatial patterns and meteorological conditions that led to the barrier closures for Storms 12 and 25.</p>
-</section>
-<section id="setup" class="level2">
-<h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <div id="setup-maps" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -254,9 +246,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   Output directory: output</code></pre>
 </div>
 </div>
-</section>
-<section id="data-loading" class="level2">
-<h2 class="anchored" data-anchor-id="data-loading">Data Loading</h2>
 <div id="load-closure-data" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load barrier closure data from master1</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Loading barrier closure data..."</span>)</span>
@@ -294,7 +283,6 @@ Data loaded:
   Storm 25 closure date: 2013-12-05 00:00:00</code></pre>
 </div>
 </div>
-</section>
 <section id="storm-12" class="level2">
 <h2 class="anchored" data-anchor-id="storm-12">Storm 12</h2>
 <p>Storm 12 corresponds to closure event index 11 (0-indexed) and uses datasets with prefix “12_” in the 2_DATA directory.</p>
@@ -516,7 +504,7 @@ Time indices for GTSM plots:
 <span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>plt.savefig(fig_file, dpi<span class="op">=</span><span class="dv">100</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
 <span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Figure saved to </span><span class="sc">{</span>fig_file<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_5115/1136680818.py:27: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_10274/1136680818.py:27: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
   plt.tight_layout(rect=[0, 0, 0.97, 1])  # Leave space for colorbar</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -651,7 +639,7 @@ Figure saved to output/maps_storm12_gtsm_surge.png</code></pre>
 <span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a>plt.savefig(fig_file, dpi<span class="op">=</span><span class="dv">100</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
 <span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Figure saved to </span><span class="sc">{</span>fig_file<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_5115/2600622236.py:52: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_10274/2600622236.py:52: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
   plt.tight_layout(rect=[0, 0, 0.97, 1])  # Leave space for colorbar</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -946,7 +934,7 @@ Time indices for GTSM plots:
 <span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>plt.savefig(fig_file, dpi<span class="op">=</span><span class="dv">100</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span>
 <span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Figure saved to </span><span class="sc">{</span>fig_file<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_5115/1136680818.py:27: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_10274/1136680818.py:27: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
   plt.tight_layout(rect=[0, 0, 0.97, 1])  # Leave space for colorbar</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -1098,7 +1086,7 @@ Figure saved to output/maps_storm25_gtsm_surge.png</code></pre>
   warnings.warn('facecolor will have no effect as it has been '
 /opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
   warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_5115/1233508593.py:57: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_10274/1233508593.py:57: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
   plt.tight_layout(rect=[0, 0, 0.97, 1])  # Leave space for colorbar</code></pre>
 </div>
 <div class="cell-output cell-output-display">

@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./eastern_scheldt.html"> 
-<span class="menu-text">Eastern Scheldt Barrier (1984-2023)</span></a>
+<span class="menu-text">Eastern Scheldt Barrier</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./thames.html"> 
@@ -154,10 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#data-loading" id="toc-data-loading" class="nav-link" data-scroll-target="#data-loading">Data Loading</a></li>
-  <li><a href="#storm-12" id="toc-storm-12" class="nav-link" data-scroll-target="#storm-12">Storm 12</a></li>
+  <li><a href="#storm-12" id="toc-storm-12" class="nav-link active" data-scroll-target="#storm-12">Storm 12</a></li>
   <li><a href="#storm-23" id="toc-storm-23" class="nav-link" data-scroll-target="#storm-23">Storm 23</a></li>
   <li><a href="#storm-25" id="toc-storm-25" class="nav-link" data-scroll-target="#storm-25">Storm 25</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
@@ -186,8 +183,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>This document provides a detailed analysis of water levels and surge for Storm 12 (closure event index 11), Storm 23 (closure event index 23, 2007), and Storm 25 (closure event index 24) for the Eastern Scheldt, converting the MATLAB script <code>master5.m</code> to Python. The analysis:</p>
 <ol type="1">
 <li>Loads barrier closure dates and tide gauge data from previous analyses</li>
@@ -199,9 +194,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ol>
 <p>This provides a comprehensive view of the water level conditions that led to the barrier closures for Storms 12, 23, and 25.</p>
-</section>
-<section id="setup" class="level2">
-<h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <div id="setup-high-waters" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -223,9 +215,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   Output directory: output</code></pre>
 </div>
 </div>
-</section>
-<section id="data-loading" class="level2">
-<h2 class="anchored" data-anchor-id="data-loading">Data Loading</h2>
 <div id="load-closure-tide-data" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load barrier closure data from master1</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Loading barrier closure data..."</span>)</span>
@@ -285,7 +274,6 @@ Data loaded:
   Time series points: 1,998,576</code></pre>
 </div>
 </div>
-</section>
 <section id="storm-12" class="level2">
 <h2 class="anchored" data-anchor-id="storm-12">Storm 12</h2>
 <p>Storm 12 corresponds to closure event index 11 (0-indexed) and uses datasets with prefix “12_” in the 2_DATA directory.</p>
@@ -726,10 +714,16 @@ Processing Storm 25 (event index 24, prefix: 25_)
   Closure date: 2013-12-05 00:00:00
   Closure date + 1 day: 2013-12-06 00:00:00</code></pre>
 </div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_10159/1153962993.py:42: UserWarning: Creating legend with loc="best" can be slow with large amounts of data.
+  plt.tight_layout()
+/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/IPython/core/pylabtools.py:170: UserWarning: Creating legend with loc="best" can be slow with large amounts of data.
+  fig.canvas.print_figure(bytes_io, **kw)</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div id="plot-water-level-surge-storm25-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="high_waters_files/figure-html/plot-water-level-surge-storm25-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="high_waters_files/figure-html/plot-water-level-surge-storm25-output-3.png" class="img-fluid figure-img"></p>
 <figcaption>Water level and surge time series for Storm 25 closure event</figcaption>
 </figure>
 </div>
