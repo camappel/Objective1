@@ -1,6 +1,6 @@
 /.quarto/
 /_site/
-!*.gif
+/output/
 *.pkl
 .DS_Store
 __pycache__/
