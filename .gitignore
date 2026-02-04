@@ -1,6 +1,8 @@
 /.quarto/
 /_site/
 /output/
+!output/**/*.gif
+!output/era5_meteorology_gifs/
 *.pkl
 .DS_Store
 __pycache__/
