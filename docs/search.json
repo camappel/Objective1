@@ -1,80 +1,10 @@
 [
   {
-    "objectID": "eastern_scheldt.html",
-    "href": "eastern_scheldt.html",
-    "title": "Eastern Scheldt Barrier",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Barrier Book",
     "section": "",
-    "text": "This document provides a complete analysis workflow for the Eastern Scheldt barrier system, combining barrier closure analysis, tide gauge data processing, tidal analysis, and visualization. The analysis covers the period from 1986 to 2024 and includes:\n\nBarrier Closure Analysis: Loading and analyzing past barrier closure dates, counting closures per water year, and calculating statistics\nTide Gauge Data Processing: Loading and combining tide gauge data from multiple sources (OS4 and RPBU gauges)\nTidal Analysis: Performing harmonic tidal decomposition and generating predicted astronomical tides\nVisualization: Creating comprehensive visualizations showing predicted high waters, observed water levels, and barrier closures\n\nWater years run from July 1 to June 30, which is more appropriate for coastal flood analysis than calendar years.\n\n\nShared utilities and configuration loaded"
-  },
-  {
-    "objectID": "eastern_scheldt.html#analysis",
-    "href": "eastern_scheldt.html#analysis",
-    "title": "Eastern Scheldt Barrier",
-    "section": "Analysis",
-    "text": "Analysis\n\n\nLoaded 31 closure datetimes\n  First closure: 1986-10-20 00:00:00\n  Last closure: 2023-12-21 00:00:00\n\nClosures per water year calculated for 39 years\n  Total closures: 31\n\nClosure statistics:\n  Min per year: 0.0\n  Mean per year: 0.79\n  Max per year: 4.0\n  Total: 31\n\nData saved to output/mast1.pkl"
-  },
-  {
-    "objectID": "eastern_scheldt.html#visualization",
-    "href": "eastern_scheldt.html#visualization",
-    "title": "Eastern Scheldt Barrier",
-    "section": "Visualization",
-    "text": "Visualization\nThis bar chart shows the number of barrier closures per water year from 1986/87 to 2024/25. The Eastern Scheldt barrier closes when water levels exceed a threshold, typically during storm surge events.\n\n\n\n\n\nNumber of Eastern Scheldt barrier closures per water year (July 1 to June 30), 1986-2024\n\n\n\n\nThe following table lists all barrier closure dates, which correspond to storm events that triggered the Eastern Scheldt barrier.\n\n\n\nTotal number of closures: 31\n\n\n\n\n\n\nComplete list of Eastern Scheldt barrier closures (storm events), 1986-2024\n\n\n\nClosure date\nClosure Date\nWater Year\nYear\nMonth\n\n\nClosure\n\n\n\n\n\n\n\n\n\n0\n1\n1986-10-20 00:00\n1986/87\n1986\nOctober\n\n\n1\n2\n1986-12-19 00:00\n1986/87\n1986\nDecember\n\n\n2\n2\n1986-12-19 00:00\n1986/87\n1986\nDecember\n\n\n3\n3\n1989-02-14 05:40\n1988/89\n1989\nFebruary\n\n\n4\n4\n1990-02-27 23:10\n1989/90\n1990\nFebruary\n\n\n5\n4\n1990-02-27 13:50\n1989/90\n1990\nFebruary\n\n\n6\n4\n1990-02-28 23:40\n1989/90\n1990\nFebruary\n\n\n7\n5\n1990-03-01 00:10\n1989/90\n1990\nMarch\n\n\n8\n6\n1990-09-21 12:00\n1990/91\n1990\nSeptember\n\n\n9\n7\n1990-12-12 05:40\n1990/91\n1990\nDecember\n\n\n10\n7\n1990-12-12 20:10\n1990/91\n1990\nDecember\n\n\n11\n8\n1992-11-11 13:40\n1992/93\n1992\nNovember\n\n\n12\n9\n1993-01-25 15:30\n1992/93\n1993\nJanuary\n\n\n13\n10\n1993-02-21 08:40\n1992/93\n1993\nFebruary\n\n\n14\n11\n1993-11-14 11:10\n1993/94\n1993\nNovember\n\n\n15\n11\n1993-11-15 00:40\n1993/94\n1993\nNovember\n\n\n16\n12\n1994-01-28 10:40\n1993/94\n1994\nJanuary\n\n\n17\n13\n1995-01-02 21:40\n1994/95\n1995\nJanuary\n\n\n18\n13\n1995-01-02 14:20\n1994/95\n1995\nJanuary\n\n\n19\n14\n1996-10-29 11:40\n1996/97\n1996\nOctober\n\n\n20\n15\n2002-10-27 14:30\n2002/03\n2002\nOctober\n\n\n21\n16\n2003-12-21 08:30\n2003/04\n2003\nDecember\n\n\n22\n17\n2004-02-08 13:20\n2003/04\n2004\nFebruary\n\n\n23\n18\n2007-11-09 22:40\n2007/08\n2007\nNovember\n\n\n24\n19\n2013-12-05 22:50\n2013/14\n2013\nDecember\n\n\n25\n20\n2014-10-21 22:30\n2014/15\n2014\nOctober\n\n\n26\n21\n2018-01-03 12:10\n2017/18\n2018\nJanuary\n\n\n27\n22\n2020-02-10 11:09\n2019/20\n2020\nFebruary\n\n\n28\n23\n2022-01-31 10:23\n2021/22\n2022\nJanuary\n\n\n29\n24\n2022-02-21 04:46\n2021/22\n2022\nFebruary\n\n\n30\n25\n2023-12-21 00:00\n2023/24\n2023\nDecember"
-  },
-  {
-    "objectID": "eastern_scheldt.html#tide-gauge-data-processing",
-    "href": "eastern_scheldt.html#tide-gauge-data-processing",
-    "title": "Eastern Scheldt Barrier",
-    "section": "Tide Gauge Data Processing",
-    "text": "Tide Gauge Data Processing\nThis section loads and processes raw tide gauge data from the Eastern Scheldt. The analysis:\n\nLoads data from multiple tide gauge files (RPBU and OS4 gauges)\nCleans data by removing invalid values\nCombines time series from different gauges to create a continuous record\nCreates a visualization of the complete water level time series\n\nThe combined time series spans from 1986 to 2023, using OS4 gauge data for the early period (1986-1987) and RPBU gauge data for the main period (1987-2023).\n\n\nData directory: ../2_DATA\nOutput directory: output\n\n\n\nLoad RPBU 1987-2022 Data\nLoad the main tide gauge dataset from the RPBU gauge covering April 1987 to December 2022.\n\n\nLoaded RPBU 1987-2022: 1,878,480 data points\n  Start: 1987-04-15 00:00:00\n  End: 2022-12-31 23:50:00\n  Valid data: 1,876,721 points (99.9%)\n\n\n\n\nLoad RPBU 2023 Data\nLoad the 2023 data from the RPBU gauge to extend the time series.\n\n\nLoaded RPBU 2023: 52,560 data points\n  Start: 2023-01-01 00:00:00\n  End: 2023-12-31 23:50:00\n  Valid data: 52,560 points (100.0%)\n\n\n\n\nLoad OS4 1982-2023 Data\nLoad data from the OS4 gauge, which provides coverage for the early period before RPBU data begins.\n\n\nLoaded OS4 1982-2023: 2,208,960 data points\n  Start: 1982-01-01 00:00:00\n  End: 2023-12-31 23:50:00\n  Valid data: 2,161,485 points (97.9%)\n\n\n\n\nCombine Time Series\nCombine the time series from different gauges to create a continuous record. Use OS4 data for the early period (1986-1987) before RPBU starts, then switch to RPBU data for the main period.\n\n\n\nCombined time series: 1,998,576 data points\n  Start: 1986-01-01 00:00:00\n  End: 2023-12-31 23:50:00\n  Valid data: 1,996,699 points (99.9%)\n  Time span: 13878 days\n\n\nSave the combined time series to a pickle file for use in subsequent analyses.\n\n\n\nData saved to output/mast2.pkl\n\n\n\n\nVisualization\nThis figure shows the combined tide gauge water level time series from 1986 to 2023 at 10-minute intervals. The data combines OS4 gauge measurements (1986-1987) and RPBU gauge measurements (1987-2023) for the Eastern Scheldt. Water levels are shown in meters relative to NAP (Normal Amsterdam Peil, the Dutch reference datum). The time series shows tidal variations, storm surges, and long-term water level patterns over the 38-year period.\n\n\n\n\n\nCombined tide gauge water level time series for the Eastern Scheldt, 1986-2023. Data combines OS4 gauge (1986-1987) and RPBU gauge (1987-2023) measurements at 10-minute intervals."
-  },
-  {
-    "objectID": "eastern_scheldt.html#tidal-analysis",
-    "href": "eastern_scheldt.html#tidal-analysis",
-    "title": "Eastern Scheldt Barrier",
-    "section": "Tidal Analysis",
-    "text": "Tidal Analysis\nThis section performs harmonic tidal analysis on tide gauge data from the Eastern Scheldt. The analysis:\n\nCalculates data quality for each year (1986-2023)\nPerforms harmonic tidal decomposition using pytides (replacing MATLAB’s t_tide)\nGenerates tidal predictions for all years\nCompares observed water levels with predicted astronomical tides\n\nThe predicted tides represent only the astronomical component, while observed water levels include both tides and meteorological effects (storm surges, wind setup, etc.).\n\nSetup and Configuration\n\n\nAnalysis configuration:\n  Years: 1986 to 2023 (38 years)\n  Data quality threshold: 60%\n  Latitude: 51.64°\n\n\n\n\nLoad Tide Gauge Data\n\n\nLoading tide gauge data...\nLoaded 1,998,576 data points\n  Start: 1986-01-01 00:00:00\n  End: 2023-12-31 23:50:00\n  Valid data: 1,996,699 points (99.9%)\n\n\n\n\nCalculate Data Quality Per Year\n\n\n\nCalculating data quality per year...\n\nData quality summary:\n  Range: 98.8% to 100.0%\n  Mean: 99.9%\n  Years with quality &gt;= 60%: 38/38\n\n\n\n\nTidal Analysis and Prediction\nFor each target year, the analysis determines a reference year, extracts data, performs harmonic decomposition, and generates predictions.\n\n\n\nLoading existing tidal analysis results...\nLoaded existing results:\n  Total predictions: 1,998,576 points\n  Start: 1986-01-01 00:00:00\n  End: 2023-12-31 23:50:00\n\n\n\n\nData saved to output/mast3.pkl\n\n\n\n\nVisualization\nThis figure compares observed water levels (blue) with predicted astronomical tides (red) from harmonic analysis. The predicted tides represent the astronomical component only, while observed water levels include both tides and meteorological effects.\n\n\n\n\n\nComparison of observed water levels (blue) and predicted astronomical tides (red) for the Eastern Scheldt, 1986-2023"
-  },
-  {
-    "objectID": "eastern_scheldt.html#predicted-high-waters-and-barrier-closures",
-    "href": "eastern_scheldt.html#predicted-high-waters-and-barrier-closures",
-    "title": "Eastern Scheldt Barrier",
-    "section": "Predicted High Waters and Barrier Closures",
-    "text": "Predicted High Waters and Barrier Closures\nThis section plots time-series of predicted high waters and barrier closures for the Eastern Scheldt. The analysis:\n\nLoads barrier closure dates and tide gauge data from previous analyses\nCreates a visualization showing:\n\nBarrier closure dates as vertical dashed lines\nPredicted astronomical tides (TIP)\nObserved water levels (WLP)\nThe difference between observed and predicted levels (surge component)\n\n\nThis visualization helps identify when barrier closures occurred relative to predicted high waters and actual water levels.\n\n\nLoading data...\n\nData loaded:\n  Closure dates: 31 closures\n    First closure: 1986-10-20 00:00:00\n    Last closure: 2023-12-21 00:00:00\n  Time series points: 1,998,576\n  Predicted tides: 1,998,576\n  Observed water levels: 1,998,576\n\n\n\nVisualization\nThis figure shows predicted astronomical tides (red), observed water levels (blue), the difference between them (green), and barrier closure dates (vertical dashed magenta lines). The difference (WLP-TIP) represents the non-tidal component, primarily storm surge.\n\n\n\n\n\nPredicted high waters, observed water levels, and barrier closures for the Eastern Scheldt"
-  },
-  {
-    "objectID": "eastern_scheldt.html#storm-1",
-    "href": "eastern_scheldt.html#storm-1",
-    "title": "Eastern Scheldt Barrier",
-    "section": "Storm 1",
-    "text": "Storm 1\n\nWater Level and Surge Analysis\n\n\n\n\n\nPredicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 1 - Eastern Scheldt\n\n\n\n\n\n\n\n\n\nWater level and surge time series for Storm 1 closure event\n\n\n\n\n\n\nSpatial Surge and Meteorological Maps\n\n\nGTSM surge GIF saved to output/maps_storm1_gtsm_surge.gif\n\n\n\n\n\n\n\n\nFigure 1: GTSM storm surge animation around Storm 1 closure event\n\n\n\n\n\nERA5 meteorology GIF saved to output/storm_era5_gifs/era5_meteorology_storm1.gif\n\n\n\n\n\n\n\n\nFigure 2: ERA5 reanalysis pressure and wind fields animation around Storm 1 closure event"
-  },
-  {
-    "objectID": "eastern_scheldt.html#storm-2",
-    "href": "eastern_scheldt.html#storm-2",
-    "title": "Eastern Scheldt Barrier",
-    "section": "Storm 2",
-    "text": "Storm 2\n\nWater Level and Surge Analysis\n\n\n\n\n\nPredicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 2 - Eastern Scheldt\n\n\n\n\n\n\n\n\n\nWater level and surge time series for Storm 2 closure event\n\n\n\n\n\n\nSpatial Surge and Meteorological Maps\n\n\n\n\n\nGTSM reanalysis surge maps at 6 time steps around Storm 2 closure event\n\n\n\n\n\n\nERA5 meteorology GIF saved to output/storm_era5_gifs/era5_meteorology_storm2.gif\n\n\n\n\n\n\n\n\nFigure 3: ERA5 reanalysis pressure and wind fields animation around Storm 2 closure event"
-  },
-  {
-    "objectID": "eastern_scheldt.html#storm-3",
-    "href": "eastern_scheldt.html#storm-3",
-    "title": "Eastern Scheldt Barrier",
-    "section": "Storm 3",
-    "text": "Storm 3\n\nWater Level and Surge Analysis\n\n\n\n\n\nPredicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 3 - Eastern Scheldt\n\n\n\n\n\n\n\n\n\nWater level and surge time series for Storm 3 closure event\n\n\n\n\n\n\nSpatial Surge and Meteorological Maps\n\n\n\n\n\nGTSM reanalysis surge maps at 6 time steps around Storm 3 closure event\n\n\n\n\n\n\nERA5 meteorology GIF saved to output/storm_era5_gifs/era5_meteorology_storm3.gif\n\n\n\n\n\n\n\n\nFigure 4: ERA5 reanalysis pressure and wind fields animation around Storm 3 closure event"
-  },
-  {
-    "objectID": "eastern_scheldt.html#storm-5",
-    "href": "eastern_scheldt.html#storm-5",
-    "title": "Eastern Scheldt Barrier",
-    "section": "Storm 5",
-    "text": "Storm 5\n\nWater Level and Surge Analysis\n\n\n\n\n\nPredicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 5 - Eastern Scheldt\n\n\n\n\n\n\n\n\n\nWater level and surge time series for Storm 5 closure event\n\n\n\n\n\n\nSpatial Surge and Meteorological Maps\n\n\n\n\n\nGTSM reanalysis surge maps at 6 time steps around Storm 5 closure event\n\n\n\n\n\n\nERA5 meteorology GIF saved to output/storm_era5_gifs/era5_meteorology_storm5.gif\n\n\n\n\n\n\n\n\nFigure 5: ERA5 reanalysis pressure and wind fields animation around Storm 5 closure event"
-  },
-  {
-    "objectID": "eastern_scheldt.html#storm-6",
-    "href": "eastern_scheldt.html#storm-6",
-    "title": "Eastern Scheldt Barrier",
-    "section": "Storm 6",
-    "text": "Storm 6\n\nWater Level and Surge Analysis\n\n\n\n\n\nPredicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 6 - Eastern Scheldt\n\n\n\n\n\n\n\n\n\nWater level and surge time series for Storm 6 closure event\n\n\n\n\n\n\nSpatial Surge and Meteorological Maps\n\n\n\n\n\nGTSM reanalysis surge maps at 6 time steps around Storm 6 closure event\n\n\n\n\n\n\nERA5 meteorology GIF saved to output/storm_era5_gifs/era5_meteorology_storm6.gif\n\n\n\n\n\n\n\n\nFigure 6: ERA5 reanalysis pressure and wind fields animation around Storm 6 closure event"
+    "text": "Barrier Book is an interactive documentation and analysis site exploring the functioning, operation, meteorological context, and flood defense performance of major storm surge barriers.\nThis site presents: - Barrier closure histories: Analyzing when and why flood barriers were closed over the past decades. - Tidal and water level data: Processing long-term tide gauge observations and predicted astronomical tides. - Meteorological conditions during storms: Examining wind, pressure, and storm data associated with each closure. - Spatio-temporal characteristics: Exploring the spatial and temporal patterns of storm events and barrier operations. - Visualizations: Comprehensive figures showing barrier operations, extreme sea levels, meteorological extremes, and trends. - Workflows and notebooks: Step-by-step technical analyses and reproducible code using Python and Quarto.\nBarrier Book is designed for researchers, civil engineers, and decision-makers interested in flood risk, coastal defense, and climate adaptation.\nAll analysis code and workflows are open and reproducible, with data sourced from official Dutch and UK agencies."
   },
   {
     "objectID": "thames.html",
@@ -208,5 +138,82 @@
     "title": "Thames Barrier",
     "section": "Part 4: Visualization",
     "text": "Part 4: Visualization\n\nClosure timing: When closures occurred relative to predicted high waters\nSurge contribution: The non-tidal component shows how much storm surge contributed to water levels\nTidal vs. meteorological effects: The difference between observed and predicted levels highlights meteorological forcing\n\nThe complete workflow provides a foundation for understanding barrier closure patterns, water level variability, and storm surge dynamics in the Thames estuary. The results can be used for further analysis of individual closure events, surge characteristics, and long-term trends."
+  },
+  {
+    "objectID": "eastern_scheldt.html",
+    "href": "eastern_scheldt.html",
+    "title": "Eastern Scheldt Barrier",
+    "section": "",
+    "text": "This document provides a complete analysis workflow for the Eastern Scheldt barrier system, combining barrier closure analysis, tide gauge data processing, tidal analysis, and visualization. The analysis covers the period from 1986 to 2024 and includes:\n\nBarrier Closure Analysis: Loading and analyzing past barrier closure dates, counting closures per water year, and calculating statistics\nTide Gauge Data Processing: Loading and combining tide gauge data from multiple sources (OS4 and RPBU gauges)\nTidal Analysis: Performing harmonic tidal decomposition and generating predicted astronomical tides\nVisualization: Creating comprehensive visualizations showing predicted high waters, observed water levels, and barrier closures\n\nWater years run from July 1 to June 30, which is more appropriate for coastal flood analysis than calendar years.\n\n\nShared utilities and configuration loaded"
+  },
+  {
+    "objectID": "eastern_scheldt.html#analysis",
+    "href": "eastern_scheldt.html#analysis",
+    "title": "Eastern Scheldt Barrier",
+    "section": "Analysis",
+    "text": "Analysis\n\n\nLoaded 31 closure datetimes\n  First closure: 1986-10-20 00:00:00\n  Last closure: 2023-12-21 00:00:00\n\nClosures per water year calculated for 39 years\n  Total closures: 31\n\nClosure statistics:\n  Min per year: 0.0\n  Mean per year: 0.79\n  Max per year: 4.0\n  Total: 31\n\nData saved to output/mast1.pkl"
+  },
+  {
+    "objectID": "eastern_scheldt.html#visualization",
+    "href": "eastern_scheldt.html#visualization",
+    "title": "Eastern Scheldt Barrier",
+    "section": "Visualization",
+    "text": "Visualization\nThis bar chart shows the number of barrier closures per water year from 1986/87 to 2024/25. The Eastern Scheldt barrier closes when water levels exceed a threshold, typically during storm surge events.\n\n\n\n\n\nNumber of Eastern Scheldt barrier closures per water year (July 1 to June 30), 1986-2024\n\n\n\n\nThe following table lists all barrier closure dates, which correspond to storm events that triggered the Eastern Scheldt barrier.\n\n\n\nTotal number of closures: 31\n\n\n\n\n\n\nComplete list of Eastern Scheldt barrier closures (storm events), 1986-2024\n\n\n\nClosure date\nClosure Date\nWater Year\nYear\nMonth\n\n\nClosure\n\n\n\n\n\n\n\n\n\n0\n1\n1986-10-20 00:00\n1986/87\n1986\nOctober\n\n\n1\n2\n1986-12-19 00:00\n1986/87\n1986\nDecember\n\n\n2\n2\n1986-12-19 00:00\n1986/87\n1986\nDecember\n\n\n3\n3\n1989-02-14 05:40\n1988/89\n1989\nFebruary\n\n\n4\n4\n1990-02-27 23:10\n1989/90\n1990\nFebruary\n\n\n5\n4\n1990-02-27 13:50\n1989/90\n1990\nFebruary\n\n\n6\n4\n1990-02-28 23:40\n1989/90\n1990\nFebruary\n\n\n7\n5\n1990-03-01 00:10\n1989/90\n1990\nMarch\n\n\n8\n6\n1990-09-21 12:00\n1990/91\n1990\nSeptember\n\n\n9\n7\n1990-12-12 05:40\n1990/91\n1990\nDecember\n\n\n10\n7\n1990-12-12 20:10\n1990/91\n1990\nDecember\n\n\n11\n8\n1992-11-11 13:40\n1992/93\n1992\nNovember\n\n\n12\n9\n1993-01-25 15:30\n1992/93\n1993\nJanuary\n\n\n13\n10\n1993-02-21 08:40\n1992/93\n1993\nFebruary\n\n\n14\n11\n1993-11-14 11:10\n1993/94\n1993\nNovember\n\n\n15\n11\n1993-11-15 00:40\n1993/94\n1993\nNovember\n\n\n16\n12\n1994-01-28 10:40\n1993/94\n1994\nJanuary\n\n\n17\n13\n1995-01-02 21:40\n1994/95\n1995\nJanuary\n\n\n18\n13\n1995-01-02 14:20\n1994/95\n1995\nJanuary\n\n\n19\n14\n1996-10-29 11:40\n1996/97\n1996\nOctober\n\n\n20\n15\n2002-10-27 14:30\n2002/03\n2002\nOctober\n\n\n21\n16\n2003-12-21 08:30\n2003/04\n2003\nDecember\n\n\n22\n17\n2004-02-08 13:20\n2003/04\n2004\nFebruary\n\n\n23\n18\n2007-11-09 22:40\n2007/08\n2007\nNovember\n\n\n24\n19\n2013-12-05 22:50\n2013/14\n2013\nDecember\n\n\n25\n20\n2014-10-21 22:30\n2014/15\n2014\nOctober\n\n\n26\n21\n2018-01-03 12:10\n2017/18\n2018\nJanuary\n\n\n27\n22\n2020-02-10 11:09\n2019/20\n2020\nFebruary\n\n\n28\n23\n2022-01-31 10:23\n2021/22\n2022\nJanuary\n\n\n29\n24\n2022-02-21 04:46\n2021/22\n2022\nFebruary\n\n\n30\n25\n2023-12-21 00:00\n2023/24\n2023\nDecember"
+  },
+  {
+    "objectID": "eastern_scheldt.html#tide-gauge-data-processing",
+    "href": "eastern_scheldt.html#tide-gauge-data-processing",
+    "title": "Eastern Scheldt Barrier",
+    "section": "Tide Gauge Data Processing",
+    "text": "Tide Gauge Data Processing\nThis section loads and processes raw tide gauge data from the Eastern Scheldt. The analysis:\n\nLoads data from multiple tide gauge files (RPBU and OS4 gauges)\nCleans data by removing invalid values\nCombines time series from different gauges to create a continuous record\nCreates a visualization of the complete water level time series\n\nThe combined time series spans from 1986 to 2023, using OS4 gauge data for the early period (1986-1987) and RPBU gauge data for the main period (1987-2023).\n\n\nData directory: ../2_DATA\nOutput directory: output\n\n\n\nLoad RPBU 1987-2022 Data\nLoad the main tide gauge dataset from the RPBU gauge covering April 1987 to December 2022.\n\n\nLoaded RPBU 1987-2022: 1,878,480 data points\n  Start: 1987-04-15 00:00:00\n  End: 2022-12-31 23:50:00\n  Valid data: 1,876,721 points (99.9%)\n\n\n\n\nLoad RPBU 2023 Data\nLoad the 2023 data from the RPBU gauge to extend the time series.\n\n\nLoaded RPBU 2023: 52,560 data points\n  Start: 2023-01-01 00:00:00\n  End: 2023-12-31 23:50:00\n  Valid data: 52,560 points (100.0%)\n\n\n\n\nLoad OS4 1982-2023 Data\nLoad data from the OS4 gauge, which provides coverage for the early period before RPBU data begins.\n\n\nLoaded OS4 1982-2023: 2,208,960 data points\n  Start: 1982-01-01 00:00:00\n  End: 2023-12-31 23:50:00\n  Valid data: 2,161,485 points (97.9%)\n\n\n\n\nCombine Time Series\nCombine the time series from different gauges to create a continuous record. Use OS4 data for the early period (1986-1987) before RPBU starts, then switch to RPBU data for the main period.\n\n\n\nCombined time series: 1,998,576 data points\n  Start: 1986-01-01 00:00:00\n  End: 2023-12-31 23:50:00\n  Valid data: 1,996,699 points (99.9%)\n  Time span: 13878 days\n\n\nSave the combined time series to a pickle file for use in subsequent analyses.\n\n\n\nData saved to output/mast2.pkl\n\n\n\n\nVisualization\nThis figure shows the combined tide gauge water level time series from 1986 to 2023 at 10-minute intervals. The data combines OS4 gauge measurements (1986-1987) and RPBU gauge measurements (1987-2023) for the Eastern Scheldt. Water levels are shown in meters relative to NAP (Normal Amsterdam Peil, the Dutch reference datum). The time series shows tidal variations, storm surges, and long-term water level patterns over the 38-year period.\n\n\n\n\n\nCombined tide gauge water level time series for the Eastern Scheldt, 1986-2023. Data combines OS4 gauge (1986-1987) and RPBU gauge (1987-2023) measurements at 10-minute intervals."
+  },
+  {
+    "objectID": "eastern_scheldt.html#tidal-analysis",
+    "href": "eastern_scheldt.html#tidal-analysis",
+    "title": "Eastern Scheldt Barrier",
+    "section": "Tidal Analysis",
+    "text": "Tidal Analysis\nThis section performs harmonic tidal analysis on tide gauge data from the Eastern Scheldt. The analysis:\n\nCalculates data quality for each year (1986-2023)\nPerforms harmonic tidal decomposition using pytides (replacing MATLAB’s t_tide)\nGenerates tidal predictions for all years\nCompares observed water levels with predicted astronomical tides\n\nThe predicted tides represent only the astronomical component, while observed water levels include both tides and meteorological effects (storm surges, wind setup, etc.).\n\nSetup and Configuration\n\n\nAnalysis configuration:\n  Years: 1986 to 2023 (38 years)\n  Data quality threshold: 60%\n  Latitude: 51.64°\n\n\n\n\nLoad Tide Gauge Data\n\n\nLoading tide gauge data...\nLoaded 1,998,576 data points\n  Start: 1986-01-01 00:00:00\n  End: 2023-12-31 23:50:00\n  Valid data: 1,996,699 points (99.9%)\n\n\n\n\nCalculate Data Quality Per Year\n\n\n\nCalculating data quality per year...\n\nData quality summary:\n  Range: 98.8% to 100.0%\n  Mean: 99.9%\n  Years with quality &gt;= 60%: 38/38\n\n\n\n\nTidal Analysis and Prediction\nFor each target year, the analysis determines a reference year, extracts data, performs harmonic decomposition, and generates predictions.\n\n\n\nLoading existing tidal analysis results...\nLoaded existing results:\n  Total predictions: 1,998,576 points\n  Start: 1986-01-01 00:00:00\n  End: 2023-12-31 23:50:00\n\n\n\n\nData saved to output/mast3.pkl\n\n\n\n\nVisualization\nThis figure compares observed water levels (blue) with predicted astronomical tides (red) from harmonic analysis. The predicted tides represent the astronomical component only, while observed water levels include both tides and meteorological effects.\n\n\n\n\n\nComparison of observed water levels (blue) and predicted astronomical tides (red) for the Eastern Scheldt, 1986-2023"
+  },
+  {
+    "objectID": "eastern_scheldt.html#predicted-high-waters-and-barrier-closures",
+    "href": "eastern_scheldt.html#predicted-high-waters-and-barrier-closures",
+    "title": "Eastern Scheldt Barrier",
+    "section": "Predicted High Waters and Barrier Closures",
+    "text": "Predicted High Waters and Barrier Closures\nThis section plots time-series of predicted high waters and barrier closures for the Eastern Scheldt. The analysis:\n\nLoads barrier closure dates and tide gauge data from previous analyses\nCreates a visualization showing:\n\nBarrier closure dates as vertical dashed lines\nPredicted astronomical tides (TIP)\nObserved water levels (WLP)\nThe difference between observed and predicted levels (surge component)\n\n\nThis visualization helps identify when barrier closures occurred relative to predicted high waters and actual water levels.\n\n\nLoading data...\n\nData loaded:\n  Closure dates: 31 closures\n    First closure: 1986-10-20 00:00:00\n    Last closure: 2023-12-21 00:00:00\n  Time series points: 1,998,576\n  Predicted tides: 1,998,576\n  Observed water levels: 1,998,576\n\n\n\nVisualization\nThis figure shows predicted astronomical tides (red), observed water levels (blue), the difference between them (green), and barrier closure dates (vertical dashed magenta lines). The difference (WLP-TIP) represents the non-tidal component, primarily storm surge.\n\n\n\n\n\nPredicted high waters, observed water levels, and barrier closures for the Eastern Scheldt"
+  },
+  {
+    "objectID": "eastern_scheldt.html#storm-1",
+    "href": "eastern_scheldt.html#storm-1",
+    "title": "Eastern Scheldt Barrier",
+    "section": "Storm 1",
+    "text": "Storm 1\n\nWater Level and Surge Analysis\n\n\n\n\n\nPredicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 1 - Eastern Scheldt\n\n\n\n\n\n\n\n\n\nWater level and surge time series for Storm 1 closure event\n\n\n\n\n\n\nSpatial Surge and Meteorological Maps\n\n\n\n\n\n\nFigure 1: GTSM storm surge animation around Storm 1 closure event\n\n\n\n\n\n\n\n\n\nFigure 2: ERA5 reanalysis pressure and wind fields animation around Storm 1 closure event"
+  },
+  {
+    "objectID": "eastern_scheldt.html#storm-2",
+    "href": "eastern_scheldt.html#storm-2",
+    "title": "Eastern Scheldt Barrier",
+    "section": "Storm 2",
+    "text": "Storm 2\n\nWater Level and Surge Analysis\n\n\n\n\n\nPredicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 2 - Eastern Scheldt\n\n\n\n\n\n\n\n\n\nWater level and surge time series for Storm 2 closure event\n\n\n\n\n\n\nSpatial Surge and Meteorological Maps\n\n\n\n\n\nGTSM reanalysis surge maps at 6 time steps around Storm 2 closure event\n\n\n\n\n\n\n\n\n\n\nFigure 3: ERA5 reanalysis pressure and wind fields animation around Storm 2 closure event"
+  },
+  {
+    "objectID": "eastern_scheldt.html#storm-3",
+    "href": "eastern_scheldt.html#storm-3",
+    "title": "Eastern Scheldt Barrier",
+    "section": "Storm 3",
+    "text": "Storm 3\n\nWater Level and Surge Analysis\n\n\n\n\n\nPredicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 3 - Eastern Scheldt\n\n\n\n\n\n\n\n\n\nWater level and surge time series for Storm 3 closure event\n\n\n\n\n\n\nSpatial Surge and Meteorological Maps\n\n\n\n\n\nGTSM reanalysis surge maps at 6 time steps around Storm 3 closure event\n\n\n\n\n\n\n\n\n\n\nFigure 4: ERA5 reanalysis pressure and wind fields animation around Storm 3 closure event"
+  },
+  {
+    "objectID": "eastern_scheldt.html#storm-5",
+    "href": "eastern_scheldt.html#storm-5",
+    "title": "Eastern Scheldt Barrier",
+    "section": "Storm 5",
+    "text": "Storm 5\n\nWater Level and Surge Analysis\n\n\n\n\n\nPredicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 5 - Eastern Scheldt\n\n\n\n\n\n\n\n\n\nWater level and surge time series for Storm 5 closure event\n\n\n\n\n\n\nSpatial Surge and Meteorological Maps\n\n\n\n\n\nGTSM reanalysis surge maps at 6 time steps around Storm 5 closure event\n\n\n\n\n\n\n\n\n\n\nFigure 5: ERA5 reanalysis pressure and wind fields animation around Storm 5 closure event"
+  },
+  {
+    "objectID": "eastern_scheldt.html#storm-6",
+    "href": "eastern_scheldt.html#storm-6",
+    "title": "Eastern Scheldt Barrier",
+    "section": "Storm 6",
+    "text": "Storm 6\n\nWater Level and Surge Analysis\n\n\n\n\n\nPredicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 6 - Eastern Scheldt\n\n\n\n\n\n\n\n\n\nWater level and surge time series for Storm 6 closure event\n\n\n\n\n\n\nSpatial Surge and Meteorological Maps\n\n\n\n\n\nGTSM reanalysis surge maps at 6 time steps around Storm 6 closure event\n\n\n\n\n\n\n\n\n\n\nFigure 6: ERA5 reanalysis pressure and wind fields animation around Storm 6 closure event"
   }
 ]
