@@ -2,7 +2,7 @@
 /_site/
 /output/
 !output/**/*.gif
-!output/era5_meteorology_gifs/
+!output/storm_era5_gifs/
 *.pkl
 .DS_Store
 __pycache__/
