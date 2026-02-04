@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -287,21 +253,14 @@ Data saved to output/mast1.pkl</code></pre>
 <section id="visualization" class="level2">
 <h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
 <p>This bar chart shows the number of barrier closures per water year from 1986/87 to 2024/25. The Eastern Scheldt barrier closes when water levels exceed a threshold, typically during storm surge events.</p>
-<div id="plot-closures" class="cell" data-fig-height="6" data-fig-width="12" data-execution_count="4">
+<div id="cell-plot-closures" class="cell" data-fig-height="6" data-fig-width="12" data-execution_count="4">
 <div class="cell-output cell-output-display">
-<div id="plot-closures-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-closures" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="eastern_scheldt_files/figure-html/plot-closures-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>Number of Eastern Scheldt barrier closures per water year (July 1 to June 30), 1986-2024</figcaption>
 </figure>
 </div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Figure saved to output/master1_closures.png</code></pre>
-</div>
-<div id="plot-closures-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
 </div>
 </div>
 <p>The following table lists all barrier closure dates, which correspond to storm events that triggered the Eastern Scheldt barrier.</p>
@@ -310,7 +269,7 @@ Figure saved to output/master1_closures.png</code></pre>
 <pre><code>
 Total number of closures: 31</code></pre>
 </div>
-<div id="table-storms" class="cell-output cell-output-display" data-execution_count="56">
+<div id="table-storms" class="cell-output cell-output-display" data-execution_count="107">
 <div>
 
 
@@ -679,21 +638,14 @@ Data saved to output/mast2.pkl</code></pre>
 <section id="visualization-1" class="level3">
 <h3 class="anchored" data-anchor-id="visualization-1">Visualization</h3>
 <p>This figure shows the combined tide gauge water level time series from 1986 to 2023 at 10-minute intervals. The data combines OS4 gauge measurements (1986-1987) and RPBU gauge measurements (1987-2023) for the Eastern Scheldt. Water levels are shown in meters relative to NAP (Normal Amsterdam Peil, the Dutch reference datum). The time series shows tidal variations, storm surges, and long-term water level patterns over the 38-year period.</p>
-<div id="plot-time-series" class="cell" data-fig-height="6" data-fig-width="14" data-execution_count="12">
+<div id="cell-plot-time-series" class="cell" data-fig-height="6" data-fig-width="14" data-execution_count="12">
 <div class="cell-output cell-output-display">
-<div id="plot-time-series-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-time-series" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="eastern_scheldt_files/figure-html/plot-time-series-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>Combined tide gauge water level time series for the Eastern Scheldt, 1986-2023. Data combines OS4 gauge (1986-1987) and RPBU gauge (1987-2023) measurements at 10-minute intervals.</figcaption>
 </figure>
 </div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Figure saved to output/master2_tide_gauge.png</code></pre>
-</div>
-<div id="plot-time-series-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -767,21 +719,14 @@ Loaded existing results:
 <section id="visualization-2" class="level3">
 <h3 class="anchored" data-anchor-id="visualization-2">Visualization</h3>
 <p>This figure compares observed water levels (blue) with predicted astronomical tides (red) from harmonic analysis. The predicted tides represent the astronomical component only, while observed water levels include both tides and meteorological effects.</p>
-<div id="plot-comparison" class="cell" data-fig-height="6" data-fig-width="14" data-execution_count="18">
+<div id="cell-plot-comparison" class="cell" data-fig-height="6" data-fig-width="14" data-execution_count="18">
 <div class="cell-output cell-output-display">
-<div id="plot-comparison-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-comparison" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="eastern_scheldt_files/figure-html/plot-comparison-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>Comparison of observed water levels (blue) and predicted astronomical tides (red) for the Eastern Scheldt, 1986-2023</figcaption>
 </figure>
 </div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Figure saved to output/master3_tidal_analysis.png</code></pre>
-</div>
-<div id="plot-comparison-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -816,21 +761,14 @@ Data loaded:
 <section id="visualization-3" class="level3">
 <h3 class="anchored" data-anchor-id="visualization-3">Visualization</h3>
 <p>This figure shows predicted astronomical tides (red), observed water levels (blue), the difference between them (green), and barrier closure dates (vertical dashed magenta lines). The difference (WLP-TIP) represents the non-tidal component, primarily storm surge.</p>
-<div id="plot-predicted-high-waters" class="cell" data-fig-height="8" data-fig-width="14" data-execution_count="20">
+<div id="cell-plot-predicted-high-waters" class="cell" data-fig-height="8" data-fig-width="14" data-execution_count="20">
 <div class="cell-output cell-output-display">
-<div id="plot-predicted-high-waters-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-predicted-high-waters" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="eastern_scheldt_files/figure-html/plot-predicted-high-waters-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>Predicted high waters, observed water levels, and barrier closures for the Eastern Scheldt</figcaption>
 </figure>
 </div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Figure saved to output/master4_predicted_high_waters.png</code></pre>
-</div>
-<div id="plot-predicted-high-waters-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -851,46 +789,30 @@ Data loaded:
 <h2 class="anchored" data-anchor-id="storm-1">Storm 1</h2>
 <section id="water-level-and-surge-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="water-level-and-surge-analysis">Water Level and Surge Analysis</h3>
-<div id="plot-predicted-high-waters-zoomed-storm1" class="cell" data-fig-height="8" data-fig-width="14" data-execution_count="22">
+<div id="cell-plot-predicted-high-waters-zoomed-storm1" class="cell" data-fig-height="8" data-fig-width="14" data-execution_count="22">
 <div class="cell-output cell-output-display">
-<div id="plot-predicted-high-waters-zoomed-storm1-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-predicted-high-waters-zoomed-storm1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="eastern_scheldt_files/figure-html/plot-predicted-high-waters-zoomed-storm1-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>Predicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 1 - Eastern Scheldt</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Figure saved to output/high_waters_storm1_predicted_high_waters_zoomed.png</code></pre>
 </div>
-<div id="plot-predicted-high-waters-zoomed-storm1-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
-</div>
-</div>
-<div id="plot-water-level-surge-storm1" class="cell" data-fig-height="10" data-fig-width="14" data-execution_count="23">
+<div id="cell-plot-water-level-surge-storm1" class="cell" data-fig-height="10" data-fig-width="14" data-execution_count="23">
 <div class="cell-output cell-output-display">
-<div id="plot-water-level-surge-storm1-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-water-level-surge-storm1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="eastern_scheldt_files/figure-html/plot-water-level-surge-storm1-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>Water level and surge time series for Storm 1 closure event</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Figure saved to output/high_waters_storm1_water_level_surge.png</code></pre>
-</div>
-<div id="plot-water-level-surge-storm1-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
-</div>
 </div>
 </section>
 <section id="spatial-surge-and-meteorological-maps" class="level3">
 <h3 class="anchored" data-anchor-id="spatial-surge-and-meteorological-maps">Spatial Surge and Meteorological Maps</h3>
 <div id="plot-gtsm-surge-storm1-gif" class="cell" data-execution_count="26">
-<div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/1323197270.py:32: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>GTSM surge GIF saved to output/maps_storm1_gtsm_surge.gif</code></pre>
 </div>
@@ -906,36 +828,8 @@ Figure&nbsp;1: GTSM storm surge animation around Storm 1 closure event
 </figure>
 </div>
 <div id="plot-era5-met-storm1-gif" class="cell" data-execution_count="27">
-<div class="cell-output cell-output-stderr">
-<pre><code>/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/3735918726.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/3735918726.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/3735918726.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/3735918726.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/3735918726.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ERA5 meteorology GIF saved to output/storm_era5_gifs/era5_meteorology_storm1.gif</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/3735918726.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)</code></pre>
 </div>
 </div>
 <div id="fig-era5-met-storm1-gif" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-cap="ERA5 reanalysis pressure and wind fields animation around Storm 1 closure event">
@@ -954,161 +848,42 @@ Figure&nbsp;2: ERA5 reanalysis pressure and wind fields animation around Storm 1
 <h2 class="anchored" data-anchor-id="storm-2">Storm 2</h2>
 <section id="water-level-and-surge-analysis-1" class="level3">
 <h3 class="anchored" data-anchor-id="water-level-and-surge-analysis-1">Water Level and Surge Analysis</h3>
-<div id="plot-predicted-high-waters-zoomed-storm2" class="cell" data-fig-height="8" data-fig-width="14" data-execution_count="28">
+<div id="cell-plot-predicted-high-waters-zoomed-storm2" class="cell" data-fig-height="8" data-fig-width="14" data-execution_count="28">
 <div class="cell-output cell-output-display">
-<div id="plot-predicted-high-waters-zoomed-storm2-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-predicted-high-waters-zoomed-storm2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="eastern_scheldt_files/figure-html/plot-predicted-high-waters-zoomed-storm2-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>Predicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 2 - Eastern Scheldt</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Figure saved to output/high_waters_storm2_predicted_high_waters_zoomed.png</code></pre>
 </div>
-<div id="plot-predicted-high-waters-zoomed-storm2-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
-</div>
-</div>
-<div id="plot-water-level-surge-storm2" class="cell" data-fig-height="10" data-fig-width="14" data-execution_count="29">
+<div id="cell-plot-water-level-surge-storm2" class="cell" data-fig-height="10" data-fig-width="14" data-execution_count="29">
 <div class="cell-output cell-output-display">
-<div id="plot-water-level-surge-storm2-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-water-level-surge-storm2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="eastern_scheldt_files/figure-html/plot-water-level-surge-storm2-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>Water level and surge time series for Storm 2 closure event</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Figure saved to output/high_waters_storm2_water_level_surge.png</code></pre>
-</div>
-<div id="plot-water-level-surge-storm2-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
-</div>
 </div>
 </section>
 <section id="spatial-surge-and-meteorological-maps-1" class="level3">
 <h3 class="anchored" data-anchor-id="spatial-surge-and-meteorological-maps-1">Spatial Surge and Meteorological Maps</h3>
-<div id="plot-gtsm-surge-storm2" class="cell" data-fig-height="10" data-fig-width="16" data-execution_count="32">
-<div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/3422602430.py:24: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
-  plt.tight_layout(rect=[0, 0, 0.97, 1])</code></pre>
-</div>
+<div id="cell-plot-gtsm-surge-storm2" class="cell" data-fig-height="10" data-fig-width="16" data-execution_count="32">
 <div class="cell-output cell-output-display">
-<div id="plot-gtsm-surge-storm2-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-gtsm-surge-storm2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="eastern_scheldt_files/figure-html/plot-gtsm-surge-storm2-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="eastern_scheldt_files/figure-html/plot-gtsm-surge-storm2-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>GTSM reanalysis surge maps at 6 time steps around Storm 2 closure event</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Figure saved to output/maps_storm2_gtsm_surge.png</code></pre>
-</div>
-<div id="plot-gtsm-surge-storm2-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
-</div>
 </div>
 <div id="plot-era5-met-storm2-gif" class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> imageio</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> io <span class="im">import</span> BytesIO</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create output directory for GIFs (new clean folder)</span></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>gif_output_dir <span class="op">=</span> os.path.join(output_dir, <span class="st">'storm_era5_gifs'</span>)</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>os.makedirs(gif_output_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>gif_file_era5 <span class="op">=</span> os.path.join(gif_output_dir, <span class="st">'era5_meteorology_storm2.gif'</span>)</span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>int_skip <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>X_sub <span class="op">=</span> X_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>]</span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>Y_sub <span class="op">=</span> Y_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>]</span>
-<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>X_vec <span class="op">=</span> X_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip]</span>
-<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>Y_vec <span class="op">=</span> Y_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip]</span>
-<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>frames <span class="op">=</span> []</span>
-<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>vmin <span class="op">=</span> <span class="dv">967</span></span>
-<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>vmax <span class="op">=</span> <span class="dv">1020</span></span>
-<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t_idx <span class="kw">in</span> t_met:</span>
-<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
-<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> plt.axes(projection<span class="op">=</span>ccrs.PlateCarree())</span>
-<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add coastlines and geographic features</span></span>
-<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeature.COASTLINE.with_scale(<span class="st">'50m'</span>), linewidth<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span><span class="st">'white'</span>)</span>
-<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeature.BORDERS.with_scale(<span class="st">'50m'</span>), linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'white'</span>)</span>
-<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeature.LAND.with_scale(<span class="st">'50m'</span>), facecolor<span class="op">=</span><span class="st">'lightgray'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get data for this time step</span></span>
-<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>    P_sub <span class="op">=</span> P_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, t_idx] <span class="op">/</span> <span class="dv">100</span></span>
-<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>    U_vec <span class="op">=</span> U_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, t_idx]</span>
-<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a>    V_vec <span class="op">=</span> V_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, t_idx]</span>
-<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot pressure field</span></span>
-<span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a>    im <span class="op">=</span> ax.pcolormesh(X_sub, Y_sub, P_sub, cmap<span class="op">=</span><span class="st">'jet'</span>, shading<span class="op">=</span><span class="st">'gouraud'</span>, </span>
-<span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a>                       vmin<span class="op">=</span>vmin, vmax<span class="op">=</span>vmax, transform<span class="op">=</span>ccrs.PlateCarree())</span>
-<span id="cb42-37"><a href="#cb42-37" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb42-38"><a href="#cb42-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot wind vectors</span></span>
-<span id="cb42-39"><a href="#cb42-39" aria-hidden="true" tabindex="-1"></a>    ax.quiver(X_vec, Y_vec, U_vec, V_vec, color<span class="op">=</span><span class="st">'k'</span>, scale<span class="op">=</span><span class="dv">1200</span>, width<span class="op">=</span><span class="fl">0.002</span>, </span>
-<span id="cb42-40"><a href="#cb42-40" aria-hidden="true" tabindex="-1"></a>              transform<span class="op">=</span>ccrs.PlateCarree())</span>
-<span id="cb42-41"><a href="#cb42-41" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb42-42"><a href="#cb42-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Formatting</span></span>
-<span id="cb42-43"><a href="#cb42-43" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(XB_MET)</span>
-<span id="cb42-44"><a href="#cb42-44" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(YB_MET)</span>
-<span id="cb42-45"><a href="#cb42-45" aria-hidden="true" tabindex="-1"></a>    ax.gridlines(draw_labels<span class="op">=</span><span class="va">True</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'gray'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
-<span id="cb42-46"><a href="#cb42-46" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(labelsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb42-47"><a href="#cb42-47" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'Longitude (deg)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb42-48"><a href="#cb42-48" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Latitude (deg)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb42-49"><a href="#cb42-49" aria-hidden="true" tabindex="-1"></a>    ax.set_title(TS_MET[t_idx].strftime(<span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M'</span>), fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb42-50"><a href="#cb42-50" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb42-51"><a href="#cb42-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add colorbar</span></span>
-<span id="cb42-52"><a href="#cb42-52" aria-hidden="true" tabindex="-1"></a>    cbar <span class="op">=</span> plt.colorbar(im, ax<span class="op">=</span>ax, fraction<span class="op">=</span><span class="fl">0.046</span>, pad<span class="op">=</span><span class="fl">0.04</span>, shrink<span class="op">=</span><span class="fl">0.6</span>)</span>
-<span id="cb42-53"><a href="#cb42-53" aria-hidden="true" tabindex="-1"></a>    cbar.set_label(<span class="st">'Pressure (hPa)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb42-54"><a href="#cb42-54" aria-hidden="true" tabindex="-1"></a>    cbar.ax.tick_params(labelsize<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb42-55"><a href="#cb42-55" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb42-56"><a href="#cb42-56" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb42-57"><a href="#cb42-57" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb42-58"><a href="#cb42-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save to buffer and append as frame</span></span>
-<span id="cb42-59"><a href="#cb42-59" aria-hidden="true" tabindex="-1"></a>    buf <span class="op">=</span> BytesIO()</span>
-<span id="cb42-60"><a href="#cb42-60" aria-hidden="true" tabindex="-1"></a>    fig.savefig(buf, <span class="bu">format</span><span class="op">=</span><span class="st">'png'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb42-61"><a href="#cb42-61" aria-hidden="true" tabindex="-1"></a>    buf.seek(<span class="dv">0</span>)</span>
-<span id="cb42-62"><a href="#cb42-62" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> imageio.imread(buf)</span>
-<span id="cb42-63"><a href="#cb42-63" aria-hidden="true" tabindex="-1"></a>    frames.append(img)</span>
-<span id="cb42-64"><a href="#cb42-64" aria-hidden="true" tabindex="-1"></a>    buf.close()</span>
-<span id="cb42-65"><a href="#cb42-65" aria-hidden="true" tabindex="-1"></a>    plt.close(fig)</span>
-<span id="cb42-66"><a href="#cb42-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-67"><a href="#cb42-67" aria-hidden="true" tabindex="-1"></a><span class="co"># Save GIF with fps=0.5 (duration=2.0 seconds per frame)</span></span>
-<span id="cb42-68"><a href="#cb42-68" aria-hidden="true" tabindex="-1"></a>imageio.mimsave(gif_file_era5, frames, fps<span class="op">=</span><span class="dv">1</span>, loop<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb42-69"><a href="#cb42-69" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"ERA5 meteorology GIF saved to </span><span class="sc">{</span>gif_file_era5<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/1917523230.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/1917523230.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/1917523230.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/1917523230.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/1917523230.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ERA5 meteorology GIF saved to output/storm_era5_gifs/era5_meteorology_storm2.gif</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/1917523230.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)</code></pre>
 </div>
 </div>
 <div id="fig-era5-met-storm2-gif" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-cap="ERA5 reanalysis pressure and wind fields animation around Storm 2 closure event">
@@ -1127,161 +902,42 @@ Figure&nbsp;3: ERA5 reanalysis pressure and wind fields animation around Storm 2
 <h2 class="anchored" data-anchor-id="storm-3">Storm 3</h2>
 <section id="water-level-and-surge-analysis-2" class="level3">
 <h3 class="anchored" data-anchor-id="water-level-and-surge-analysis-2">Water Level and Surge Analysis</h3>
-<div id="plot-predicted-high-waters-zoomed-storm3" class="cell" data-fig-height="8" data-fig-width="14" data-execution_count="34">
+<div id="cell-plot-predicted-high-waters-zoomed-storm3" class="cell" data-fig-height="8" data-fig-width="14" data-execution_count="34">
 <div class="cell-output cell-output-display">
-<div id="plot-predicted-high-waters-zoomed-storm3-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-predicted-high-waters-zoomed-storm3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="eastern_scheldt_files/figure-html/plot-predicted-high-waters-zoomed-storm3-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>Predicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 3 - Eastern Scheldt</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Figure saved to output/high_waters_storm3_predicted_high_waters_zoomed.png</code></pre>
 </div>
-<div id="plot-predicted-high-waters-zoomed-storm3-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
-</div>
-</div>
-<div id="plot-water-level-surge-storm3" class="cell" data-fig-height="10" data-fig-width="14" data-execution_count="35">
+<div id="cell-plot-water-level-surge-storm3" class="cell" data-fig-height="10" data-fig-width="14" data-execution_count="35">
 <div class="cell-output cell-output-display">
-<div id="plot-water-level-surge-storm3-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-water-level-surge-storm3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="eastern_scheldt_files/figure-html/plot-water-level-surge-storm3-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>Water level and surge time series for Storm 3 closure event</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Figure saved to output/high_waters_storm3_water_level_surge.png</code></pre>
-</div>
-<div id="plot-water-level-surge-storm3-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
-</div>
 </div>
 </section>
 <section id="spatial-surge-and-meteorological-maps-2" class="level3">
 <h3 class="anchored" data-anchor-id="spatial-surge-and-meteorological-maps-2">Spatial Surge and Meteorological Maps</h3>
-<div id="plot-gtsm-surge-storm3" class="cell" data-fig-height="10" data-fig-width="16" data-execution_count="38">
-<div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/3367164277.py:24: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
-  plt.tight_layout(rect=[0, 0, 0.97, 1])</code></pre>
-</div>
+<div id="cell-plot-gtsm-surge-storm3" class="cell" data-fig-height="10" data-fig-width="16" data-execution_count="38">
 <div class="cell-output cell-output-display">
-<div id="plot-gtsm-surge-storm3-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-gtsm-surge-storm3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="eastern_scheldt_files/figure-html/plot-gtsm-surge-storm3-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="eastern_scheldt_files/figure-html/plot-gtsm-surge-storm3-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>GTSM reanalysis surge maps at 6 time steps around Storm 3 closure event</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Figure saved to output/maps_storm3_gtsm_surge.png</code></pre>
-</div>
-<div id="plot-gtsm-surge-storm3-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
-</div>
 </div>
 <div id="plot-era5-met-storm3-gif" class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> imageio</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> io <span class="im">import</span> BytesIO</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create output directory for GIFs (new clean folder)</span></span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>gif_output_dir <span class="op">=</span> os.path.join(output_dir, <span class="st">'storm_era5_gifs'</span>)</span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>os.makedirs(gif_output_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>gif_file_era5 <span class="op">=</span> os.path.join(gif_output_dir, <span class="st">'era5_meteorology_storm3.gif'</span>)</span>
-<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>int_skip <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>X_sub <span class="op">=</span> X_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>]</span>
-<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>Y_sub <span class="op">=</span> Y_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>]</span>
-<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>X_vec <span class="op">=</span> X_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip]</span>
-<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>Y_vec <span class="op">=</span> Y_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip]</span>
-<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>frames <span class="op">=</span> []</span>
-<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>vmin <span class="op">=</span> <span class="dv">967</span></span>
-<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>vmax <span class="op">=</span> <span class="dv">1020</span></span>
-<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t_idx <span class="kw">in</span> t_met:</span>
-<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
-<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> plt.axes(projection<span class="op">=</span>ccrs.PlateCarree())</span>
-<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add coastlines and geographic features</span></span>
-<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeature.COASTLINE.with_scale(<span class="st">'50m'</span>), linewidth<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span><span class="st">'white'</span>)</span>
-<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeature.BORDERS.with_scale(<span class="st">'50m'</span>), linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'white'</span>)</span>
-<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeature.LAND.with_scale(<span class="st">'50m'</span>), facecolor<span class="op">=</span><span class="st">'lightgray'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb53-28"><a href="#cb53-28" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb53-29"><a href="#cb53-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get data for this time step</span></span>
-<span id="cb53-30"><a href="#cb53-30" aria-hidden="true" tabindex="-1"></a>    P_sub <span class="op">=</span> P_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, t_idx] <span class="op">/</span> <span class="dv">100</span></span>
-<span id="cb53-31"><a href="#cb53-31" aria-hidden="true" tabindex="-1"></a>    U_vec <span class="op">=</span> U_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, t_idx]</span>
-<span id="cb53-32"><a href="#cb53-32" aria-hidden="true" tabindex="-1"></a>    V_vec <span class="op">=</span> V_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, t_idx]</span>
-<span id="cb53-33"><a href="#cb53-33" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb53-34"><a href="#cb53-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot pressure field</span></span>
-<span id="cb53-35"><a href="#cb53-35" aria-hidden="true" tabindex="-1"></a>    im <span class="op">=</span> ax.pcolormesh(X_sub, Y_sub, P_sub, cmap<span class="op">=</span><span class="st">'jet'</span>, shading<span class="op">=</span><span class="st">'gouraud'</span>, </span>
-<span id="cb53-36"><a href="#cb53-36" aria-hidden="true" tabindex="-1"></a>                       vmin<span class="op">=</span>vmin, vmax<span class="op">=</span>vmax, transform<span class="op">=</span>ccrs.PlateCarree())</span>
-<span id="cb53-37"><a href="#cb53-37" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb53-38"><a href="#cb53-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot wind vectors</span></span>
-<span id="cb53-39"><a href="#cb53-39" aria-hidden="true" tabindex="-1"></a>    ax.quiver(X_vec, Y_vec, U_vec, V_vec, color<span class="op">=</span><span class="st">'k'</span>, scale<span class="op">=</span><span class="dv">1200</span>, width<span class="op">=</span><span class="fl">0.002</span>, </span>
-<span id="cb53-40"><a href="#cb53-40" aria-hidden="true" tabindex="-1"></a>              transform<span class="op">=</span>ccrs.PlateCarree())</span>
-<span id="cb53-41"><a href="#cb53-41" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb53-42"><a href="#cb53-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Formatting</span></span>
-<span id="cb53-43"><a href="#cb53-43" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(XB_MET)</span>
-<span id="cb53-44"><a href="#cb53-44" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(YB_MET)</span>
-<span id="cb53-45"><a href="#cb53-45" aria-hidden="true" tabindex="-1"></a>    ax.gridlines(draw_labels<span class="op">=</span><span class="va">True</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'gray'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
-<span id="cb53-46"><a href="#cb53-46" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(labelsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb53-47"><a href="#cb53-47" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'Longitude (deg)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb53-48"><a href="#cb53-48" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Latitude (deg)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb53-49"><a href="#cb53-49" aria-hidden="true" tabindex="-1"></a>    ax.set_title(TS_MET[t_idx].strftime(<span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M'</span>), fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb53-50"><a href="#cb53-50" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb53-51"><a href="#cb53-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add colorbar</span></span>
-<span id="cb53-52"><a href="#cb53-52" aria-hidden="true" tabindex="-1"></a>    cbar <span class="op">=</span> plt.colorbar(im, ax<span class="op">=</span>ax, fraction<span class="op">=</span><span class="fl">0.046</span>, pad<span class="op">=</span><span class="fl">0.04</span>, shrink<span class="op">=</span><span class="fl">0.6</span>)</span>
-<span id="cb53-53"><a href="#cb53-53" aria-hidden="true" tabindex="-1"></a>    cbar.set_label(<span class="st">'Pressure (hPa)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb53-54"><a href="#cb53-54" aria-hidden="true" tabindex="-1"></a>    cbar.ax.tick_params(labelsize<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb53-55"><a href="#cb53-55" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb53-56"><a href="#cb53-56" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb53-57"><a href="#cb53-57" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb53-58"><a href="#cb53-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save to buffer and append as frame</span></span>
-<span id="cb53-59"><a href="#cb53-59" aria-hidden="true" tabindex="-1"></a>    buf <span class="op">=</span> BytesIO()</span>
-<span id="cb53-60"><a href="#cb53-60" aria-hidden="true" tabindex="-1"></a>    fig.savefig(buf, <span class="bu">format</span><span class="op">=</span><span class="st">'png'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb53-61"><a href="#cb53-61" aria-hidden="true" tabindex="-1"></a>    buf.seek(<span class="dv">0</span>)</span>
-<span id="cb53-62"><a href="#cb53-62" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> imageio.imread(buf)</span>
-<span id="cb53-63"><a href="#cb53-63" aria-hidden="true" tabindex="-1"></a>    frames.append(img)</span>
-<span id="cb53-64"><a href="#cb53-64" aria-hidden="true" tabindex="-1"></a>    buf.close()</span>
-<span id="cb53-65"><a href="#cb53-65" aria-hidden="true" tabindex="-1"></a>    plt.close(fig)</span>
-<span id="cb53-66"><a href="#cb53-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-67"><a href="#cb53-67" aria-hidden="true" tabindex="-1"></a><span class="co"># Save GIF with fps=0.5 (duration=2.0 seconds per frame)</span></span>
-<span id="cb53-68"><a href="#cb53-68" aria-hidden="true" tabindex="-1"></a>imageio.mimsave(gif_file_era5, frames, fps<span class="op">=</span><span class="dv">1</span>, loop<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb53-69"><a href="#cb53-69" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"ERA5 meteorology GIF saved to </span><span class="sc">{</span>gif_file_era5<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/1402814406.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/1402814406.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/1402814406.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/1402814406.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/1402814406.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ERA5 meteorology GIF saved to output/storm_era5_gifs/era5_meteorology_storm3.gif</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/1402814406.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)</code></pre>
 </div>
 </div>
 <div id="fig-era5-met-storm3-gif" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-cap="ERA5 reanalysis pressure and wind fields animation around Storm 3 closure event">
@@ -1300,161 +956,42 @@ Figure&nbsp;4: ERA5 reanalysis pressure and wind fields animation around Storm 3
 <h2 class="anchored" data-anchor-id="storm-5">Storm 5</h2>
 <section id="water-level-and-surge-analysis-3" class="level3">
 <h3 class="anchored" data-anchor-id="water-level-and-surge-analysis-3">Water Level and Surge Analysis</h3>
-<div id="plot-predicted-high-waters-zoomed-storm5" class="cell" data-fig-height="8" data-fig-width="14" data-execution_count="40">
+<div id="cell-plot-predicted-high-waters-zoomed-storm5" class="cell" data-fig-height="8" data-fig-width="14" data-execution_count="40">
 <div class="cell-output cell-output-display">
-<div id="plot-predicted-high-waters-zoomed-storm5-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-predicted-high-waters-zoomed-storm5" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="eastern_scheldt_files/figure-html/plot-predicted-high-waters-zoomed-storm5-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>Predicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 5 - Eastern Scheldt</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Figure saved to output/high_waters_storm5_predicted_high_waters_zoomed.png</code></pre>
 </div>
-<div id="plot-predicted-high-waters-zoomed-storm5-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
-</div>
-</div>
-<div id="plot-water-level-surge-storm5" class="cell" data-fig-height="10" data-fig-width="14" data-execution_count="41">
+<div id="cell-plot-water-level-surge-storm5" class="cell" data-fig-height="10" data-fig-width="14" data-execution_count="41">
 <div class="cell-output cell-output-display">
-<div id="plot-water-level-surge-storm5-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-water-level-surge-storm5" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="eastern_scheldt_files/figure-html/plot-water-level-surge-storm5-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>Water level and surge time series for Storm 5 closure event</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Figure saved to output/high_waters_storm5_water_level_surge.png</code></pre>
-</div>
-<div id="plot-water-level-surge-storm5-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
-</div>
 </div>
 </section>
 <section id="spatial-surge-and-meteorological-maps-3" class="level3">
 <h3 class="anchored" data-anchor-id="spatial-surge-and-meteorological-maps-3">Spatial Surge and Meteorological Maps</h3>
-<div id="plot-gtsm-surge-storm5" class="cell" data-fig-height="10" data-fig-width="16" data-execution_count="44">
-<div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/1456226599.py:24: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
-  plt.tight_layout(rect=[0, 0, 0.97, 1])</code></pre>
-</div>
+<div id="cell-plot-gtsm-surge-storm5" class="cell" data-fig-height="10" data-fig-width="16" data-execution_count="44">
 <div class="cell-output cell-output-display">
-<div id="plot-gtsm-surge-storm5-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-gtsm-surge-storm5" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="eastern_scheldt_files/figure-html/plot-gtsm-surge-storm5-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="eastern_scheldt_files/figure-html/plot-gtsm-surge-storm5-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>GTSM reanalysis surge maps at 6 time steps around Storm 5 closure event</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Figure saved to output/maps_storm5_gtsm_surge.png</code></pre>
-</div>
-<div id="plot-gtsm-surge-storm5-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
-</div>
 </div>
 <div id="plot-era5-met-storm5-gif" class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> imageio</span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> io <span class="im">import</span> BytesIO</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create output directory for GIFs (new clean folder)</span></span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>gif_output_dir <span class="op">=</span> os.path.join(output_dir, <span class="st">'storm_era5_gifs'</span>)</span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>os.makedirs(gif_output_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>gif_file_era5 <span class="op">=</span> os.path.join(gif_output_dir, <span class="st">'era5_meteorology_storm5.gif'</span>)</span>
-<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>int_skip <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a>X_sub <span class="op">=</span> X_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>]</span>
-<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a>Y_sub <span class="op">=</span> Y_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>]</span>
-<span id="cb64-13"><a href="#cb64-13" aria-hidden="true" tabindex="-1"></a>X_vec <span class="op">=</span> X_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip]</span>
-<span id="cb64-14"><a href="#cb64-14" aria-hidden="true" tabindex="-1"></a>Y_vec <span class="op">=</span> Y_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip]</span>
-<span id="cb64-15"><a href="#cb64-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-16"><a href="#cb64-16" aria-hidden="true" tabindex="-1"></a>frames <span class="op">=</span> []</span>
-<span id="cb64-17"><a href="#cb64-17" aria-hidden="true" tabindex="-1"></a>vmin <span class="op">=</span> <span class="dv">967</span></span>
-<span id="cb64-18"><a href="#cb64-18" aria-hidden="true" tabindex="-1"></a>vmax <span class="op">=</span> <span class="dv">1020</span></span>
-<span id="cb64-19"><a href="#cb64-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-20"><a href="#cb64-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t_idx <span class="kw">in</span> t_met:</span>
-<span id="cb64-21"><a href="#cb64-21" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
-<span id="cb64-22"><a href="#cb64-22" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> plt.axes(projection<span class="op">=</span>ccrs.PlateCarree())</span>
-<span id="cb64-23"><a href="#cb64-23" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb64-24"><a href="#cb64-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add coastlines and geographic features</span></span>
-<span id="cb64-25"><a href="#cb64-25" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeature.COASTLINE.with_scale(<span class="st">'50m'</span>), linewidth<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span><span class="st">'white'</span>)</span>
-<span id="cb64-26"><a href="#cb64-26" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeature.BORDERS.with_scale(<span class="st">'50m'</span>), linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'white'</span>)</span>
-<span id="cb64-27"><a href="#cb64-27" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeature.LAND.with_scale(<span class="st">'50m'</span>), facecolor<span class="op">=</span><span class="st">'lightgray'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb64-28"><a href="#cb64-28" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb64-29"><a href="#cb64-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get data for this time step</span></span>
-<span id="cb64-30"><a href="#cb64-30" aria-hidden="true" tabindex="-1"></a>    P_sub <span class="op">=</span> P_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, t_idx] <span class="op">/</span> <span class="dv">100</span></span>
-<span id="cb64-31"><a href="#cb64-31" aria-hidden="true" tabindex="-1"></a>    U_vec <span class="op">=</span> U_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, t_idx]</span>
-<span id="cb64-32"><a href="#cb64-32" aria-hidden="true" tabindex="-1"></a>    V_vec <span class="op">=</span> V_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, t_idx]</span>
-<span id="cb64-33"><a href="#cb64-33" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb64-34"><a href="#cb64-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot pressure field</span></span>
-<span id="cb64-35"><a href="#cb64-35" aria-hidden="true" tabindex="-1"></a>    im <span class="op">=</span> ax.pcolormesh(X_sub, Y_sub, P_sub, cmap<span class="op">=</span><span class="st">'jet'</span>, shading<span class="op">=</span><span class="st">'gouraud'</span>, </span>
-<span id="cb64-36"><a href="#cb64-36" aria-hidden="true" tabindex="-1"></a>                       vmin<span class="op">=</span>vmin, vmax<span class="op">=</span>vmax, transform<span class="op">=</span>ccrs.PlateCarree())</span>
-<span id="cb64-37"><a href="#cb64-37" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb64-38"><a href="#cb64-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot wind vectors</span></span>
-<span id="cb64-39"><a href="#cb64-39" aria-hidden="true" tabindex="-1"></a>    ax.quiver(X_vec, Y_vec, U_vec, V_vec, color<span class="op">=</span><span class="st">'k'</span>, scale<span class="op">=</span><span class="dv">1200</span>, width<span class="op">=</span><span class="fl">0.002</span>, </span>
-<span id="cb64-40"><a href="#cb64-40" aria-hidden="true" tabindex="-1"></a>              transform<span class="op">=</span>ccrs.PlateCarree())</span>
-<span id="cb64-41"><a href="#cb64-41" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb64-42"><a href="#cb64-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Formatting</span></span>
-<span id="cb64-43"><a href="#cb64-43" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(XB_MET)</span>
-<span id="cb64-44"><a href="#cb64-44" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(YB_MET)</span>
-<span id="cb64-45"><a href="#cb64-45" aria-hidden="true" tabindex="-1"></a>    ax.gridlines(draw_labels<span class="op">=</span><span class="va">True</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'gray'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
-<span id="cb64-46"><a href="#cb64-46" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(labelsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb64-47"><a href="#cb64-47" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'Longitude (deg)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb64-48"><a href="#cb64-48" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Latitude (deg)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb64-49"><a href="#cb64-49" aria-hidden="true" tabindex="-1"></a>    ax.set_title(TS_MET[t_idx].strftime(<span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M'</span>), fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb64-50"><a href="#cb64-50" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb64-51"><a href="#cb64-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add colorbar</span></span>
-<span id="cb64-52"><a href="#cb64-52" aria-hidden="true" tabindex="-1"></a>    cbar <span class="op">=</span> plt.colorbar(im, ax<span class="op">=</span>ax, fraction<span class="op">=</span><span class="fl">0.046</span>, pad<span class="op">=</span><span class="fl">0.04</span>, shrink<span class="op">=</span><span class="fl">0.6</span>)</span>
-<span id="cb64-53"><a href="#cb64-53" aria-hidden="true" tabindex="-1"></a>    cbar.set_label(<span class="st">'Pressure (hPa)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb64-54"><a href="#cb64-54" aria-hidden="true" tabindex="-1"></a>    cbar.ax.tick_params(labelsize<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb64-55"><a href="#cb64-55" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb64-56"><a href="#cb64-56" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb64-57"><a href="#cb64-57" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb64-58"><a href="#cb64-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save to buffer and append as frame</span></span>
-<span id="cb64-59"><a href="#cb64-59" aria-hidden="true" tabindex="-1"></a>    buf <span class="op">=</span> BytesIO()</span>
-<span id="cb64-60"><a href="#cb64-60" aria-hidden="true" tabindex="-1"></a>    fig.savefig(buf, <span class="bu">format</span><span class="op">=</span><span class="st">'png'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb64-61"><a href="#cb64-61" aria-hidden="true" tabindex="-1"></a>    buf.seek(<span class="dv">0</span>)</span>
-<span id="cb64-62"><a href="#cb64-62" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> imageio.imread(buf)</span>
-<span id="cb64-63"><a href="#cb64-63" aria-hidden="true" tabindex="-1"></a>    frames.append(img)</span>
-<span id="cb64-64"><a href="#cb64-64" aria-hidden="true" tabindex="-1"></a>    buf.close()</span>
-<span id="cb64-65"><a href="#cb64-65" aria-hidden="true" tabindex="-1"></a>    plt.close(fig)</span>
-<span id="cb64-66"><a href="#cb64-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-67"><a href="#cb64-67" aria-hidden="true" tabindex="-1"></a><span class="co"># Save GIF with fps=0.5 (duration=2.0 seconds per frame)</span></span>
-<span id="cb64-68"><a href="#cb64-68" aria-hidden="true" tabindex="-1"></a>imageio.mimsave(gif_file_era5, frames, fps<span class="op">=</span><span class="dv">1</span>, loop<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb64-69"><a href="#cb64-69" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"ERA5 meteorology GIF saved to </span><span class="sc">{</span>gif_file_era5<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/839965135.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/839965135.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/839965135.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/839965135.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/839965135.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ERA5 meteorology GIF saved to output/storm_era5_gifs/era5_meteorology_storm5.gif</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/839965135.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)</code></pre>
 </div>
 </div>
 <div id="fig-era5-met-storm5-gif" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-cap="ERA5 reanalysis pressure and wind fields animation around Storm 5 closure event">
@@ -1473,161 +1010,42 @@ Figure&nbsp;5: ERA5 reanalysis pressure and wind fields animation around Storm 5
 <h2 class="anchored" data-anchor-id="storm-6">Storm 6</h2>
 <section id="water-level-and-surge-analysis-4" class="level3">
 <h3 class="anchored" data-anchor-id="water-level-and-surge-analysis-4">Water Level and Surge Analysis</h3>
-<div id="plot-predicted-high-waters-zoomed-storm6" class="cell" data-fig-height="8" data-fig-width="14" data-execution_count="46">
+<div id="cell-plot-predicted-high-waters-zoomed-storm6" class="cell" data-fig-height="8" data-fig-width="14" data-execution_count="46">
 <div class="cell-output cell-output-display">
-<div id="plot-predicted-high-waters-zoomed-storm6-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-predicted-high-waters-zoomed-storm6" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="eastern_scheldt_files/figure-html/plot-predicted-high-waters-zoomed-storm6-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>Predicted high waters, observed water levels, and barrier closure (zoomed view) for Storm 6 - Eastern Scheldt</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Figure saved to output/high_waters_storm6_predicted_high_waters_zoomed.png</code></pre>
 </div>
-<div id="plot-predicted-high-waters-zoomed-storm6-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
-</div>
-</div>
-<div id="plot-water-level-surge-storm6" class="cell" data-fig-height="10" data-fig-width="14" data-execution_count="47">
+<div id="cell-plot-water-level-surge-storm6" class="cell" data-fig-height="10" data-fig-width="14" data-execution_count="47">
 <div class="cell-output cell-output-display">
-<div id="plot-water-level-surge-storm6-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-water-level-surge-storm6" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="eastern_scheldt_files/figure-html/plot-water-level-surge-storm6-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>Water level and surge time series for Storm 6 closure event</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Figure saved to output/high_waters_storm6_water_level_surge.png</code></pre>
-</div>
-<div id="plot-water-level-surge-storm6-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
-</div>
 </div>
 </section>
 <section id="spatial-surge-and-meteorological-maps-4" class="level3">
 <h3 class="anchored" data-anchor-id="spatial-surge-and-meteorological-maps-4">Spatial Surge and Meteorological Maps</h3>
-<div id="plot-gtsm-surge-storm6" class="cell" data-fig-height="10" data-fig-width="16" data-execution_count="50">
-<div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/3290841739.py:24: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
-  plt.tight_layout(rect=[0, 0, 0.97, 1])</code></pre>
-</div>
+<div id="cell-plot-gtsm-surge-storm6" class="cell" data-fig-height="10" data-fig-width="16" data-execution_count="50">
 <div class="cell-output cell-output-display">
-<div id="plot-gtsm-surge-storm6-1" class="quarto-figure quarto-figure-center anchored">
+<div id="plot-gtsm-surge-storm6" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="eastern_scheldt_files/figure-html/plot-gtsm-surge-storm6-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="eastern_scheldt_files/figure-html/plot-gtsm-surge-storm6-output-1.png" class="img-fluid figure-img"></p>
 <figcaption>GTSM reanalysis surge maps at 6 time steps around Storm 6 closure event</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Figure saved to output/maps_storm6_gtsm_surge.png</code></pre>
-</div>
-<div id="plot-gtsm-surge-storm6-2" class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
-</div>
 </div>
 <div id="plot-era5-met-storm6-gif" class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> imageio</span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> io <span class="im">import</span> BytesIO</span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create output directory for GIFs (new clean folder)</span></span>
-<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>gif_output_dir <span class="op">=</span> os.path.join(output_dir, <span class="st">'storm_era5_gifs'</span>)</span>
-<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>os.makedirs(gif_output_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a>gif_file_era5 <span class="op">=</span> os.path.join(gif_output_dir, <span class="st">'era5_meteorology_storm6.gif'</span>)</span>
-<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a>int_skip <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a>X_sub <span class="op">=</span> X_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>]</span>
-<span id="cb75-12"><a href="#cb75-12" aria-hidden="true" tabindex="-1"></a>Y_sub <span class="op">=</span> Y_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>]</span>
-<span id="cb75-13"><a href="#cb75-13" aria-hidden="true" tabindex="-1"></a>X_vec <span class="op">=</span> X_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip]</span>
-<span id="cb75-14"><a href="#cb75-14" aria-hidden="true" tabindex="-1"></a>Y_vec <span class="op">=</span> Y_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip]</span>
-<span id="cb75-15"><a href="#cb75-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-16"><a href="#cb75-16" aria-hidden="true" tabindex="-1"></a>frames <span class="op">=</span> []</span>
-<span id="cb75-17"><a href="#cb75-17" aria-hidden="true" tabindex="-1"></a>vmin <span class="op">=</span> <span class="dv">967</span></span>
-<span id="cb75-18"><a href="#cb75-18" aria-hidden="true" tabindex="-1"></a>vmax <span class="op">=</span> <span class="dv">1020</span></span>
-<span id="cb75-19"><a href="#cb75-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-20"><a href="#cb75-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t_idx <span class="kw">in</span> t_met:</span>
-<span id="cb75-21"><a href="#cb75-21" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
-<span id="cb75-22"><a href="#cb75-22" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> plt.axes(projection<span class="op">=</span>ccrs.PlateCarree())</span>
-<span id="cb75-23"><a href="#cb75-23" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb75-24"><a href="#cb75-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add coastlines and geographic features</span></span>
-<span id="cb75-25"><a href="#cb75-25" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeature.COASTLINE.with_scale(<span class="st">'50m'</span>), linewidth<span class="op">=</span><span class="fl">0.8</span>, color<span class="op">=</span><span class="st">'white'</span>)</span>
-<span id="cb75-26"><a href="#cb75-26" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeature.BORDERS.with_scale(<span class="st">'50m'</span>), linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'white'</span>)</span>
-<span id="cb75-27"><a href="#cb75-27" aria-hidden="true" tabindex="-1"></a>    ax.add_feature(cfeature.LAND.with_scale(<span class="st">'50m'</span>), facecolor<span class="op">=</span><span class="st">'lightgray'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb75-28"><a href="#cb75-28" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb75-29"><a href="#cb75-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get data for this time step</span></span>
-<span id="cb75-30"><a href="#cb75-30" aria-hidden="true" tabindex="-1"></a>    P_sub <span class="op">=</span> P_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, t_idx] <span class="op">/</span> <span class="dv">100</span></span>
-<span id="cb75-31"><a href="#cb75-31" aria-hidden="true" tabindex="-1"></a>    U_vec <span class="op">=</span> U_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, t_idx]</span>
-<span id="cb75-32"><a href="#cb75-32" aria-hidden="true" tabindex="-1"></a>    V_vec <span class="op">=</span> V_MET[lon_idx[<span class="dv">0</span>]:lon_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, lat_idx[<span class="dv">0</span>]:lat_idx[<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>:int_skip, t_idx]</span>
-<span id="cb75-33"><a href="#cb75-33" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb75-34"><a href="#cb75-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot pressure field</span></span>
-<span id="cb75-35"><a href="#cb75-35" aria-hidden="true" tabindex="-1"></a>    im <span class="op">=</span> ax.pcolormesh(X_sub, Y_sub, P_sub, cmap<span class="op">=</span><span class="st">'jet'</span>, shading<span class="op">=</span><span class="st">'gouraud'</span>, </span>
-<span id="cb75-36"><a href="#cb75-36" aria-hidden="true" tabindex="-1"></a>                       vmin<span class="op">=</span>vmin, vmax<span class="op">=</span>vmax, transform<span class="op">=</span>ccrs.PlateCarree())</span>
-<span id="cb75-37"><a href="#cb75-37" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb75-38"><a href="#cb75-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot wind vectors</span></span>
-<span id="cb75-39"><a href="#cb75-39" aria-hidden="true" tabindex="-1"></a>    ax.quiver(X_vec, Y_vec, U_vec, V_vec, color<span class="op">=</span><span class="st">'k'</span>, scale<span class="op">=</span><span class="dv">1200</span>, width<span class="op">=</span><span class="fl">0.002</span>, </span>
-<span id="cb75-40"><a href="#cb75-40" aria-hidden="true" tabindex="-1"></a>              transform<span class="op">=</span>ccrs.PlateCarree())</span>
-<span id="cb75-41"><a href="#cb75-41" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb75-42"><a href="#cb75-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Formatting</span></span>
-<span id="cb75-43"><a href="#cb75-43" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(XB_MET)</span>
-<span id="cb75-44"><a href="#cb75-44" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(YB_MET)</span>
-<span id="cb75-45"><a href="#cb75-45" aria-hidden="true" tabindex="-1"></a>    ax.gridlines(draw_labels<span class="op">=</span><span class="va">True</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'gray'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
-<span id="cb75-46"><a href="#cb75-46" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(labelsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb75-47"><a href="#cb75-47" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'Longitude (deg)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb75-48"><a href="#cb75-48" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Latitude (deg)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb75-49"><a href="#cb75-49" aria-hidden="true" tabindex="-1"></a>    ax.set_title(TS_MET[t_idx].strftime(<span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M'</span>), fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb75-50"><a href="#cb75-50" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb75-51"><a href="#cb75-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add colorbar</span></span>
-<span id="cb75-52"><a href="#cb75-52" aria-hidden="true" tabindex="-1"></a>    cbar <span class="op">=</span> plt.colorbar(im, ax<span class="op">=</span>ax, fraction<span class="op">=</span><span class="fl">0.046</span>, pad<span class="op">=</span><span class="fl">0.04</span>, shrink<span class="op">=</span><span class="fl">0.6</span>)</span>
-<span id="cb75-53"><a href="#cb75-53" aria-hidden="true" tabindex="-1"></a>    cbar.set_label(<span class="st">'Pressure (hPa)'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb75-54"><a href="#cb75-54" aria-hidden="true" tabindex="-1"></a>    cbar.ax.tick_params(labelsize<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb75-55"><a href="#cb75-55" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb75-56"><a href="#cb75-56" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb75-57"><a href="#cb75-57" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb75-58"><a href="#cb75-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save to buffer and append as frame</span></span>
-<span id="cb75-59"><a href="#cb75-59" aria-hidden="true" tabindex="-1"></a>    buf <span class="op">=</span> BytesIO()</span>
-<span id="cb75-60"><a href="#cb75-60" aria-hidden="true" tabindex="-1"></a>    fig.savefig(buf, <span class="bu">format</span><span class="op">=</span><span class="st">'png'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb75-61"><a href="#cb75-61" aria-hidden="true" tabindex="-1"></a>    buf.seek(<span class="dv">0</span>)</span>
-<span id="cb75-62"><a href="#cb75-62" aria-hidden="true" tabindex="-1"></a>    img <span class="op">=</span> imageio.imread(buf)</span>
-<span id="cb75-63"><a href="#cb75-63" aria-hidden="true" tabindex="-1"></a>    frames.append(img)</span>
-<span id="cb75-64"><a href="#cb75-64" aria-hidden="true" tabindex="-1"></a>    buf.close()</span>
-<span id="cb75-65"><a href="#cb75-65" aria-hidden="true" tabindex="-1"></a>    plt.close(fig)</span>
-<span id="cb75-66"><a href="#cb75-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-67"><a href="#cb75-67" aria-hidden="true" tabindex="-1"></a><span class="co"># Save GIF with fps=0.5 (duration=2.0 seconds per frame)</span></span>
-<span id="cb75-68"><a href="#cb75-68" aria-hidden="true" tabindex="-1"></a>imageio.mimsave(gif_file_era5, frames, fps<span class="op">=</span><span class="dv">1</span>, loop<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb75-69"><a href="#cb75-69" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"ERA5 meteorology GIF saved to </span><span class="sc">{</span>gif_file_era5<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/3985167973.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/3985167973.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/3985167973.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/3985167973.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '
-/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/3985167973.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)
-/opt/miniconda3/envs/objective1/lib/python3.14/site-packages/cartopy/mpl/feature_artist.py:143: UserWarning: facecolor will have no effect as it has been defined as "never".
-  warnings.warn('facecolor will have no effect as it has been '</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ERA5 meteorology GIF saved to output/storm_era5_gifs/era5_meteorology_storm6.gif</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/m8/cp78hgjj6j937vhj63cdm7_c0000gn/T/ipykernel_83008/3985167973.py:62: DeprecationWarning: Starting with ImageIO v3 the behavior of this function will switch to that of iio.v3.imread. To keep the current behavior (and make this warning disappear) use `import imageio.v2 as imageio` or call `imageio.v2.imread` directly.
-  img = imageio.imread(buf)</code></pre>
 </div>
 </div>
 <div id="fig-era5-met-storm6-gif" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-cap="ERA5 reanalysis pressure and wind fields animation around Storm 6 closure event">
